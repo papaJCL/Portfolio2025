@@ -1376,6 +1376,8 @@
       height: calc(100% - 40px);
       /* Account for navigation help */
       padding: 20px;
+      gap: 20px;
+      /* Add gap for spacing */
     }
 
     /* Left column: Characters list */
@@ -1386,7 +1388,18 @@
       padding: 15px;
       display: flex;
       flex-direction: column;
-      margin-right: 20px;
+      margin-right: 0;
+      /* Remove margin-right and use gap instead */
+    }
+
+    /* Right column: Character details */
+    .character-details-column {
+      width: 65%;
+      border: 3px solid #DDDDDD;
+      background-color: #111111;
+      padding: 15px;
+      position: relative;
+      overflow-y: auto;
     }
 
     .characters-list-title {
@@ -1655,12 +1668,150 @@
     }
 
     /* Character description */
+    /* Custom scrollbar for character description */
+    /* Responsive adjustments for very small screens */
+    /* Media queries for different screen sizes */
+    @media screen and (max-width: 1200px) {
+      .characters-popup {
+        width: 90%;
+        height: 80%;
+      }
+    }
+
+    /* Mobile layout - stack columns vertically */
+    @media screen and (max-width: 768px) {
+      .characters-grid {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+
+      .characters-list-column,
+      .character-details-column {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        max-height: 45%;
+      }
+
+      .characters-list-column {
+        min-height: 150px;
+        /* Ensure there's enough room for the list */
+        height: 30%;
+      }
+
+      .character-details-column {
+        flex: 1;
+        height: auto;
+        overflow-y: auto;
+        min-height: 50vh;
+        /* Use viewport height */
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        padding-bottom: 20px;
+        /* Add space at bottom */
+      }
+
+      /* Make character details fill the available space */
+      .character-details.active {
+        display: flex !important;
+        /* Force display flex */
+        flex-direction: column;
+        height: 100%;
+        flex: 1;
+      }
+
+      .characters-list {
+        max-height: 100px;
+        /* Limit height so it doesn't take too much space */
+        overflow-y: auto;
+      }
+
+      /* Adjust popup height to accommodate stacked layout */
+      .characters-popup {
+        height: 90vh;
+        /* Taller on mobile */
+
+      }
+
+      /* Make the card fill all available space */
+      .character-details-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 400px;
+        /* Minimum height to ensure visibility */
+      }
+
+      /* Character description takes remaining space */
+      .character-description {
+        flex: 1;
+        min-height: 200px;
+        /* Enough space for text */
+        max-height: none !important;
+        /* Remove any max height restriction */
+        overflow-y: auto;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .characters-list-column {
+        max-height: 35vh;
+        min-height: 150px;
+        overflow-y: auto;
+      }
+    }
+
+    /* Make the character name larger and more visible on mobile */
+    @media screen and (max-width: 480px) {
+      .character-image {
+        height: 180px;
+        /* Make image smaller on very small screens */
+        width: 120px;
+      }
+
+      .character-role {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .character-bio {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .characters-navigation-help {
+        padding: 8px;
+      }
+
+      .nav-help-item {
+        margin: 0 8px;
+      }
+    }
+
+
+    .character-description::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .character-description::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    .character-description::-webkit-scrollbar-thumb {
+      background: #444;
+      border: 1px solid #000000;
+    }
+
+
     .character-description {
       padding: 15px;
       background-color: #000000;
       border: 3px solid #555555;
       margin-top: 15px;
       flex: 1;
+      overflow-y: auto;/
     }
 
     .character-role {
@@ -2553,9 +2704,15 @@
               </div>
               <div class="character-description">
                 <h3 class="character-role">JEREMY</h3>
-                <p class="character-bio">A skilled warrior with four years of combat experience in the realm of software engineering. After a temporary journey through other lands, he has returned to reclaim his place in the technological kingdom. Currently mastering the arcane arts of AI, unlocking powerful spells that were once thought impossible.
-                </br></br>
-                  When not battling bugs and crafting digital solutions, he builds his strength in the iron temples, explores the vast mountain ranges on foot, and conquers the snow-covered slopes with legendary skill. A well-balanced adventurer who combines technical prowess with physical might - truly a formidable ally on any quest.</p>
+                <p class="character-bio">A skilled warrior with four years of combat experience in the realm of software
+                  engineering. After a temporary journey through other lands, he has returned to reclaim his place in
+                  the technological kingdom. Currently mastering the arcane arts of AI, unlocking powerful spells that
+                  were once thought impossible.
+                  </br></br>
+                  When not battling bugs and crafting digital solutions, he builds his strength in the iron temples,
+                  explores the vast mountain ranges on foot, and conquers the snow-covered slopes with legendary skill.
+                  A well-balanced adventurer who combines technical prowess with physical might - truly a formidable
+                  ally on any quest.</p>
               </div>
             </div>
           </div>
@@ -2574,9 +2731,14 @@
               <div class="character-description">
                 <h3 class="character-role">CHOPPER</h3>
                 <p class="character-bio">
-                  A battle-hardened companion who has weathered many trials in his seven years. This noble coonhound bears the scars of multiple stomach surgeries, each one a testament to his incredible resilience and will to survive. Though dependent on his master's presence, his loyalty knows no bounds.
-                </br></br>
-                  Chopper serves as both guardian and confidant, with an uncanny ability to restore party morale through his legendary cuddles. His affectionate nature can melt even the iciest of hearts, and many foes have unwittingly lowered their defenses in his presence. As Jeremy's loyal son and closest ally, he provides unwavering support on all adventures, never straying far from his master's side.
+                  A battle-hardened companion who has weathered many trials in his seven years. This noble coonhound
+                  bears the scars of multiple stomach surgeries, each one a testament to his incredible resilience and
+                  will to survive. Though dependent on his master's presence, his loyalty knows no bounds.
+                  </br></br>
+                  Chopper serves as both guardian and confidant, with an uncanny ability to restore party morale through
+                  his legendary cuddles. His affectionate nature can melt even the iciest of hearts, and many foes have
+                  unwittingly lowered their defenses in his presence. As Jeremy's loyal son and closest ally, he
+                  provides unwavering support on all adventures, never straying far from his master's side.
                 </p>
               </div>
             </div>
