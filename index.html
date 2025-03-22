@@ -2592,7 +2592,11 @@
         <div class="projects-list-column">
           <div class="projects-list-title">PROJECTS</div>
           <div class="projects-list">
-            <div class="project-item selected" data-project="PERN-stack" data-url="https://github.com/papaJCL/Docker-boiletplate">
+            <div class="project-item selected" data-project="portfolio">
+              <div class="project-item-marker">►</div>
+              <div class="project-item-name">PORTFOLIO</div>
+            </div>
+            <div class="project-item" data-project="PERN-stack" data-url="https://github.com/papaJCL/Docker-boiletplate">
               <div class="project-item-marker">►</div>
               <div class="project-item-name">PERN Stack Boilerplate </div>
             </div>
@@ -2621,7 +2625,30 @@
           <div class="project-details-title">PROJECT DETAILS</div>
 
           <!-- Individual project details (only one shows at a time) -->
-          <div class="project-details active" id="PERN-stack-details">
+          <div class="project-details active" id="portfolio-details">
+            <div class="project-name">PORTFOLIO</div>
+            <div class="project-stats">
+              <div class="project-stat">
+                <span class="stat-label">LEVEL:</span>
+                <span class="stat-value">ADVANCED</span>
+              </div>
+              <div class="project-stat">
+                <span class="stat-label">TYPE:</span>
+                <span class="stat-value">WEB APP</span>
+              </div>
+              <div class="project-stat">
+                <span class="stat-label">TECH:</span>
+                <span class="stat-value">VANILLA JS, HTML, ClAUDE 3.7</span>
+              </div>
+            </div>
+            <div class="project-description">
+              Heavy CSS Portfolio Website displaying UI skills and testing the boundries of AI
+            </br></br>
+            After seeing lots of examples of insane front-end with Claude 3.7 I wanted to put it to the test. It's brilliant in debugging/front-end ideas but if you're not tracking every bit of code it can put you into a debug mess adding lots of features you didn't ask for. I wanted to see how crazy it could get so I decided to design a super fancy portfolio website(not mobile friendly). Pretty proud of the result(UI wise). 
+            </div>
+          </div>
+          
+          <div class="project-details" id="PERN-stack-details">
             <div class="project-name">PERN-STACK BOILERPLATE</div>
             <div class="project-stats">
               <div class="project-stat">
@@ -2638,10 +2665,10 @@
               </div>
             </div>
             <div class="project-description">
-              CLI Application that let users update their Trello account from the terminal. No UI required.
+              Full stack boilerplate deployed via docker that uses the PERN stack
             </br></br>
-              Wanted to learn more about the back-end of development. What a CLI is, multiple API endpoints, Authentication, and a small program that is actually useful in daily life. Also learned about formatting README.md so it actually looks usable for the user. 
-            </div>
+            Learned about how to develop a full API/Front-End/DB with Docker project. Most difficult part was routing and middleware as I had low knowledge of it before this project. Also proud of my README on it.
+          </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
                 <span class="action-icon">⟨⟩</span>
