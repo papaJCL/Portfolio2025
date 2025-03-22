@@ -1655,12 +1655,47 @@
     }
 
     /* Character description */
+    /* Custom scrollbar for character description */
+/* Responsive adjustments for very small screens */
+@media screen and (max-height: 700px) {
+  .character-description {
+    max-height: 150px;
+  }
+  
+  .character-image {
+    height: 180px;
+  }
+}
+
+/* For medium screens, balance the description area better */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .character-description {
+    max-height: 250px;
+  }
+}
+
+
+.character-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.character-description::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.character-description::-webkit-scrollbar-thumb {
+  background: #444;
+  border: 1px solid #000000;
+}
+    
+    
     .character-description {
       padding: 15px;
-      background-color: #000000;
-      border: 3px solid #555555;
-      margin-top: 15px;
-      flex: 1;
+  background-color: #000000;
+  border: 3px solid #555555;
+  margin-top: 15px;
+  flex: 1;
+  overflow-y: auto; /
     }
 
     .character-role {
