@@ -1315,6 +1315,29 @@
     }
 
     /* Characters Overlay */
+    /* Profile picture styling */
+    .profile-picture {
+      width: 100%;
+      /* Fill the entire width */
+      height: 100%;
+      /* Fill the entire height */
+      object-fit: cover;
+      /* Cover the container, may crop image */
+      image-rendering: pixelated;
+      /* Keep pixelated rendering for pixel art */
+      filter: contrast(1.1) brightness(0.9);
+      transition: all 0.3s ease;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Optional: Add a hover effect */
+    .profile-picture:hover {
+      filter: contrast(1.2) brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+      transform: scale(1.05);
+    }
+
     .characters-overlay {
       position: fixed;
       top: 0;
@@ -1478,6 +1501,20 @@
       height: 100%;
     }
 
+    .character-image::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border: 3px solid #DDDDDD;
+      pointer-events: none;
+      clip-path: polygon(0% 0%, 5% 0%, 5% 5%, 95% 5%, 95% 0%, 100% 0%,
+          100% 5%, 100% 95%, 95% 95%, 95% 100%, 5% 100%,
+          5% 95%, 0% 95%, 0% 5%);
+    }
+
     /* Character image container */
     .character-image-container {
       width: 100%;
@@ -1489,12 +1526,16 @@
     .character-image {
       width: 150px;
       height: 200px;
-      background-color: #000000;
+      background-color: #111111;
       border: 3px solid #DDDDDD;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.7);
+      padding: 0;
+      /* Remove all padding */
+      overflow: hidden;
+      position: relative;
     }
 
     /* Pixel art character sprites */
@@ -1794,9 +1835,11 @@
     /* Individual project details */
     .project-details {
       display: none;
-      height: calc(100% - 45px); /* Account for title */
+      height: calc(100% - 45px);
+      /* Account for title */
       overflow-y: auto;
-      max-height: 100%;  /* Ensure it doesn't exceed container */
+      max-height: 100%;
+      /* Ensure it doesn't exceed container */
     }
 
     .project-details.active {
@@ -1833,43 +1876,43 @@
     }
 
     @media screen and (max-width: 1200px) {
-  .projects-popup {
-    width: 90%;
-    height: 80%;
-  }
-}
+      .projects-popup {
+        width: 90%;
+        height: 80%;
+      }
+    }
 
-@media screen and (max-width: 768px) {
-  .projects-grid {
-    flex-direction: column;
-  }
-  
-  .projects-list-column, 
-  .project-details-column {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-    max-height: 45%;
-  }
-  
-  .project-details {
-    max-height: 100%;
-  }
-}
+    @media screen and (max-width: 768px) {
+      .projects-grid {
+        flex-direction: column;
+      }
 
-/* Custom scrollbar for project description */
-.project-description::-webkit-scrollbar {
-  width: 6px;
-}
+      .projects-list-column,
+      .project-details-column {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        max-height: 45%;
+      }
 
-.project-description::-webkit-scrollbar-track {
-  background: #000000;
-}
+      .project-details {
+        max-height: 100%;
+      }
+    }
 
-.project-description::-webkit-scrollbar-thumb {
-  background: #444;
-  border: 1px solid #000000;
-}
+    /* Custom scrollbar for project description */
+    .project-description::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .project-description::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    .project-description::-webkit-scrollbar-thumb {
+      background: #444;
+      border: 1px solid #000000;
+    }
 
     .stat-label {
       font-size: 12px;
@@ -1889,8 +1932,10 @@
       letter-spacing: 0.8px;
       margin-bottom: 25px;
       flex: 1;
-      overflow-y: auto;  /* Allow scrolling within the description if needed */
-      padding-right: 5px; /* Add some padding for scrollbar */
+      overflow-y: auto;
+      /* Allow scrolling within the description if needed */
+      padding-right: 5px;
+      /* Add some padding for scrollbar */
     }
 
 
@@ -2483,15 +2528,11 @@
           <div class="characters-list">
             <div class="character-item selected" data-character="developer">
               <div class="character-item-marker">►</div>
-              <div class="character-item-name">DEVELOPER</div>
+              <div class="character-item-name">JEREMY</div>
             </div>
             <div class="character-item" data-character="designer">
               <div class="character-item-marker">►</div>
-              <div class="character-item-name">DESIGNER</div>
-            </div>
-            <div class="character-item" data-character="architect">
-              <div class="character-item-marker">►</div>
-              <div class="character-item-name">ARCHITECT</div>
+              <div class="character-item-name">CHOPPER</div>
             </div>
           </div>
         </div>
@@ -2502,17 +2543,19 @@
           <div class="character-details active" id="developer-details">
             <div class="character-details-card">
               <div class="character-image-container">
-                <div class="character-image">
-                  <!-- Pixel art character placeholder -->
-                  <div class="pixel-character developer-sprite"></div>
+                <!-- Update the character image container to support profile pictures -->
+                <div class="character-image-container">
+                  <div class="character-image">
+                    <!-- Replace pixel art character with profile image -->
+                    <img src="guts.jpg" alt="Profile Picture" class="profile-picture">
+                  </div>
                 </div>
               </div>
               <div class="character-description">
-                <h3 class="character-role">SOFTWARE DEVELOPER</h3>
-                <p class="character-bio">A skilled warrior who has mastered the arcane languages of HTML, CSS and
-                  JavaScript. Specializes in frontend development and creating responsive user interfaces. Known for
-                  optimizing application performance and writing clean, maintainable code. Has completed numerous quests
-                  including e-commerce platforms and interactive web applications.</p>
+                <h3 class="character-role">JEREMY</h3>
+                <p class="character-bio">A skilled warrior with four years of combat experience in the realm of software engineering. After a temporary journey through other lands, he has returned to reclaim his place in the technological kingdom. Currently mastering the arcane arts of AI, unlocking powerful spells that were once thought impossible.
+                </br></br>
+                  When not battling bugs and crafting digital solutions, he builds his strength in the iron temples, explores the vast mountain ranges on foot, and conquers the snow-covered slopes with legendary skill. A well-balanced adventurer who combines technical prowess with physical might - truly a formidable ally on any quest.</p>
               </div>
             </div>
           </div>
@@ -2520,36 +2563,21 @@
           <div class="character-details" id="designer-details">
             <div class="character-details-card">
               <div class="character-image-container">
-                <div class="character-image">
-                  <!-- Pixel art character placeholder -->
-                  <div class="pixel-character designer-sprite"></div>
+                <!-- Update the character image container to support profile pictures -->
+                <div class="character-image-container">
+                  <div class="character-image">
+                    <!-- Replace pixel art character with profile image -->
+                    <img src="chopper1.png" alt="Profile Picture" class="profile-picture">
+                  </div>
                 </div>
               </div>
               <div class="character-description">
-                <h3 class="character-role">UX/UI DESIGNER</h3>
-                <p class="character-bio">A creative mage with an eye for detail and aesthetics. Crafts intuitive user
-                  experiences using the mystical arts of wireframing and prototyping. Combines the powers of color
-                  theory and typography to create visually appealing interfaces. Works closely with developers to ensure
-                  designs are implemented with pixel-perfect precision.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="character-details" id="architect-details">
-            <div class="character-details-card">
-              <div class="character-image-container">
-                <div class="character-image">
-                  <!-- Pixel art character placeholder -->
-                  <div class="pixel-character architect-sprite"></div>
-                </div>
-              </div>
-              <div class="character-description">
-                <h3 class="character-role">SYSTEM ARCHITECT</h3>
-                <p class="character-bio">A wise sage who oversees the construction of complex systems. Masters the
-                  ancient knowledge of scalable architecture and best practices. Can foresee potential issues before
-                  they arise and devise elegant solutions. Guards the realm against technical debt and ensures the
-                  chosen technologies align with project goals. Mentors junior developers in the ways of clean code and
-                  system design.</p>
+                <h3 class="character-role">CHOPPER</h3>
+                <p class="character-bio">
+                  A battle-hardened companion who has weathered many trials in his seven years. This noble coonhound bears the scars of multiple stomach surgeries, each one a testament to his incredible resilience and will to survive. Though dependent on his master's presence, his loyalty knows no bounds.
+                </br></br>
+                  Chopper serves as both guardian and confidant, with an uncanny ability to restore party morale through his legendary cuddles. His affectionate nature can melt even the iciest of hearts, and many foes have unwittingly lowered their defenses in his presence. As Jeremy's loyal son and closest ally, he provides unwavering support on all adventures, never straying far from his master's side.
+                </p>
               </div>
             </div>
           </div>
@@ -2596,9 +2624,10 @@
               <div class="project-item-marker">►</div>
               <div class="project-item-name">PORTFOLIO</div>
             </div>
-            <div class="project-item" data-project="PERN-stack" data-url="https://github.com/papaJCL/Docker-boiletplate">
+            <div class="project-item" data-project="PERN-stack"
+              data-url="https://github.com/papaJCL/Docker-boiletplate">
               <div class="project-item-marker">►</div>
-              <div class="project-item-name">PERN Stack Boilerplate </div>
+              <div class="project-item-name">PERN STACK BOILERPLATE </div>
             </div>
             <div class="project-item" data-project="trello-cli" data-url="https://github.com/papaJCL/Trello-CLI">
               <div class="project-item-marker">►</div>
@@ -2643,11 +2672,14 @@
             </div>
             <div class="project-description">
               Heavy CSS Portfolio Website displaying UI skills and testing the boundries of AI
-            </br></br>
-            After seeing lots of examples of insane front-end with Claude 3.7 I wanted to put it to the test. It's brilliant in debugging/front-end ideas but if you're not tracking every bit of code it can put you into a debug mess adding lots of features you didn't ask for. I wanted to see how crazy it could get so I decided to design a super fancy portfolio website(not mobile friendly). Pretty proud of the result(UI wise). 
+              </br></br>
+              After seeing lots of examples of insane front-end with Claude 3.7 I wanted to put it to the test. It's
+              brilliant in debugging/front-end ideas but if you're not tracking every bit of code it can put you into a
+              debug mess adding lots of features you didn't ask for. I wanted to see how crazy it could get so I decided
+              to design a super fancy portfolio website(not mobile friendly). Pretty proud of the result(UI wise).
             </div>
           </div>
-          
+
           <div class="project-details" id="PERN-stack-details">
             <div class="project-name">PERN-STACK BOILERPLATE</div>
             <div class="project-stats">
@@ -2666,9 +2698,10 @@
             </div>
             <div class="project-description">
               Full stack boilerplate deployed via docker that uses the PERN stack
-            </br></br>
-            Learned about how to develop a full API/Front-End/DB with Docker project. Most difficult part was routing and middleware as I had low knowledge of it before this project. Also proud of my README on it.
-          </div>
+              </br></br>
+              Learned about how to develop a full API/Front-End/DB with Docker project. Most difficult part was routing
+              and middleware as I had low knowledge of it before this project. Also proud of my README on it.
+            </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
                 <span class="action-icon">⟨⟩</span>
@@ -2677,7 +2710,7 @@
             </div>
           </div>
 
-          
+
           <div class="project-details" id="trello-cli-details">
             <div class="project-name">TRELLO-CLI</div>
             <div class="project-stats">
@@ -2696,8 +2729,10 @@
             </div>
             <div class="project-description">
               CLI Application that let users update their Trello account from the terminal. No UI required.
-            </br></br>
-              Wanted to learn more about the back-end of development. What a CLI is, multiple API endpoints, Authentication, and a small program that is actually useful in daily life. Also learned about formatting README.md so it actually looks usable for the user. 
+              </br></br>
+              Wanted to learn more about the back-end of development. What a CLI is, multiple API endpoints,
+              Authentication, and a small program that is actually useful in daily life. Also learned about formatting
+              README.md so it actually looks usable for the user.
             </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
@@ -2707,7 +2742,7 @@
             </div>
           </div>
 
-          
+
           <div class="project-details" id="covid-details">
             <div class="project-name">COVID</div>
             <div class="project-stats">
@@ -2725,9 +2760,11 @@
               </div>
             </div>
             <div class="project-description">
-              Covid website that would graph/track the amount of deaths and cases daily/monthly for an easy readout for the user.
-            </br></br>
-              Built to help with the crazyness of covid and to become better with react. Used production grade components, and learned about graphing with an API.
+              Covid website that would graph/track the amount of deaths and cases daily/monthly for an easy readout for
+              the user.
+              </br></br>
+              Built to help with the crazyness of covid and to become better with react. Used production grade
+              components, and learned about graphing with an API.
             </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
@@ -2754,9 +2791,16 @@
               </div>
             </div>
             <div class="project-description">
-              Software App that lets you plan your destination in the fastest route possible. Customize points on a map you want to travel to and find the fast route(Shows several different algorithm options available). Also lets you import a .json(examples on git) to just auto load destinations.
-            </br></br>
-              This was my first ever real software engineering product from college. We were divided into groups, learned about Agile methodologies, and the overall class was set up like an early stage start-up(chaos included). I was the main engineer on the front-end for this project dabbing in react for the first time. Additionally I learned how ec2 buckets work so I could self host this later once the class was over. Backend was complex algorithms so the user could find the fastest route(like google maps). Very messy react code. Semester long project.  
+              Software App that lets you plan your destination in the fastest route possible. Customize points on a map
+              you want to travel to and find the fast route(Shows several different algorithm options available). Also
+              lets you import a .json(examples on git) to just auto load destinations.
+              </br></br>
+              This was my first ever real software engineering product from college. We were divided into groups,
+              learned about Agile methodologies, and the overall class was set up like an early stage start-up(chaos
+              included). I was the main engineer on the front-end for this project dabbing in react for the first time.
+              Additionally I learned how ec2 buckets work so I could self host this later once the class was over.
+              Backend was complex algorithms so the user could find the fastest route(like google maps). Very messy
+              react code. Semester long project.
             </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
@@ -2765,7 +2809,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="project-details" id="gpa-calculator-details">
             <div class="project-name">GPA Calculator</div>
             <div class="project-stats">
@@ -2784,7 +2828,8 @@
             </div>
             <div class="project-description">
               Simple Calculator App</br></br>
-              My first "project". Although super simple it was still the process of learning it on my own, learning debugging, and learning how javascript, components, rendering, state all works. 
+              My first "project". Although super simple it was still the process of learning it on my own, learning
+              debugging, and learning how javascript, components, rendering, state all works.
             </div>
             <div class="project-actions">
               <div class="action-button" id="view-live-btn">
