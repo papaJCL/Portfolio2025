@@ -1775,14 +1775,16 @@
         -webkit-overflow-scrolling: touch;
         overflow-y: visible !important;
         flex: 1;
-        min-height: 200px;
-        /* Enough space for text */
-        max-height: none !important;
-        /* Remove any max height restriction */
         overflow-y: auto;
         margin-bottom: 20px;
         box-sizing: border-box;
         padding-bottom: 60px; /* Add extra padding at bottom for easier scrolling */
+        height: auto !important; /* Auto height to fit content */
+    min-height: auto !important; /* Allow it to be as small as needed */
+    max-height: none !important; /* No maximum height */
+    overflow: visible !important; /* Don't scroll within this element */
+    display: block !important; /* Change from flex to block */
+    width: 100%; /* Full width */
 
       }
 
@@ -1802,6 +1804,16 @@
    .character-item {
     padding: 8px;
     margin-bottom: 5px;
+  }
+
+   /* Make character bio text fully contained */
+   .character-bio {
+    width: 100%;
+    height: auto;
+    padding-bottom: 20px; /* Ensure text doesn't touch the bottom edge */
+    position: relative; /* For proper positioning */
+    overflow: visible; /* Don't clip content */
+    word-wrap: break-word; /* Prevent text overflow */
   }
   
   /* Last character item has no bottom margin */
