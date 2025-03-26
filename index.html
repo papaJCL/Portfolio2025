@@ -1707,6 +1707,10 @@
     flex: 0 0 auto; /* Don't grow, don't shrink, size to content */
       }
 
+      .character-image-container {
+    flex-shrink: 0; /* Prevent container from shrinking */
+  }
+
       .character-details-column {
         flex: 1 1 auto; /* Grow, shrink, and base on content */
     margin-top: 15px; /* Add space between columns */
@@ -1769,7 +1773,7 @@
       /* Character description takes remaining space */
       .character-description {
         -webkit-overflow-scrolling: touch;
-        overflow-y: auto !important;
+        overflow-y: visible !important;
         flex: 1;
         min-height: 200px;
         /* Enough space for text */
@@ -1778,7 +1782,7 @@
         overflow-y: auto;
         margin-bottom: 20px;
         box-sizing: border-box;
-        padding-bottom: 30px; /* Add extra padding at bottom for easier scrolling */
+        padding-bottom: 60px; /* Add extra padding at bottom for easier scrolling */
 
       }
 
