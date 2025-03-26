@@ -1685,6 +1685,9 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px;
+    height: auto;
+    min-height: 60vh;
+    touch-action: pan-y; /* Explicitly enable vertical touch scrolling */
       }
 
       .characters-list-column,
@@ -1710,6 +1713,11 @@
     height: auto;
     max-height: none;
     min-height: 0; /* Let it size based on available space */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+    overflow-y: auto !important; /* Force scrolling */
+    height: auto;
+    max-height: 65vh;
       }
 
       /* Make character details fill the available space */
@@ -1755,6 +1763,8 @@
 
       /* Character description takes remaining space */
       .character-description {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto !important;
         flex: 1;
         min-height: 200px;
         /* Enough space for text */
@@ -1763,6 +1773,8 @@
         overflow-y: auto;
         margin-bottom: 20px;
         box-sizing: border-box;
+        padding-bottom: 30px; /* Add extra padding at bottom for easier scrolling */
+
       }
 
       .characters-list-column {
@@ -1801,6 +1813,11 @@
 
   .characters-popup .pixel-decorator {
     display: none; /* Hide decorative corners on mobile fullscreen */
+  }
+
+  .characters-popup {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
    /* Same changes for projects popup */
