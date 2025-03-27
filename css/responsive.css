@@ -1,0 +1,1363 @@
+/* Mobile CSS Improvements for Gothic Title and Subtitle */
+@media screen and (max-width: 768px) {
+    .gothic-bw-title {
+        letter-spacing: 2px;
+        transform: scale(1, 1.15);
+        width: 100%;
+        font-size: 1.4em;
+        /* Increased from base size */
+    }
+
+    .gothic-bw-title .title-line {
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    /* Apply to subtitle within landing page specifically */
+    #landing .subtitle {
+        font-size: 0.75rem;
+        /* Slightly reduced subtitle size */
+        margin-bottom: 35px;
+        margin-top: 20px;
+    }
+
+    /* Menu options slightly bigger */
+    .menu-option {
+        font-size: 1.1rem;
+        margin: 14px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gothic-bw-title {
+        letter-spacing: 1px;
+        font-size: 1.2em;
+        /* Increased from 0.9em */
+        line-height: 1.4;
+        /* Add line height for better readability */
+    }
+
+    .gothic-bw-title .title-line {
+        margin-bottom: 10px;
+    }
+
+    #landing .subtitle {
+        font-size: 0.65rem;
+        margin-bottom: 25px;
+        margin-top: 15px;
+    }
+
+    .menu-option {
+        font-size: 1rem;
+        margin: 12px 0;
+    }
+}
+
+/* Reduced glow effect for mobile devices */
+@media screen and (max-width: 768px) {
+    @keyframes whitePulse {
+
+        /* Redefine animation within media query */
+        0%,
+        100% {
+            text-shadow:
+                0 0 3px rgba(255, 255, 255, 0.3),
+                1px 1px 0 #000000,
+                -1px -1px 0 #000000,
+                1px -1px 0 #000000,
+                -1px 1px 0 #000000;
+        }
+
+        50% {
+            text-shadow:
+                0 0 5px rgba(255, 255, 255, 0.5),
+                1px 1px 0 #000000,
+                -1px -1px 0 #000000,
+                1px -1px 0 #000000,
+                -1px 1px 0 #000000;
+        }
+    }
+
+    .gothic-bw-title {
+        filter: contrast(1.1);
+        /* Reduced from 1.2 */
+        /* Ensure animation uses the redefined keyframes */
+        animation-name: whitePulse;
+    }
+}
+
+/* Screens under 400px - prevent word breaking */
+@media screen and (max-width: 400px) {
+    .gothic-bw-title {
+        font-size: 0.95em;
+        /* Smaller font size to prevent line breaks */
+        letter-spacing: 1px;
+        /* Remove letter spacing to save space */
+    }
+
+    .gothic-bw-title .title-line:last-child {
+        white-space: nowrap;
+        /* Prevent breaking within this line */
+        font-size: 0.9em;
+        /* Make second line slightly smaller */
+        transform: scale(0.95, 1);
+        /* Slight horizontal compression */
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 375px) {
+    .gothic-bw-title {
+        font-size: 0.9em;
+        /* Further reduced for very small screens */
+    }
+
+    .gothic-bw-title .title-line {
+        /* Use class selector */
+        line-height: 1.3;
+    }
+
+    #landing .subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+        margin-bottom: 20px;
+        margin-top: 12px;
+    }
+
+    .menu-option {
+        font-size: 0.9rem;
+        margin: 10px 0;
+        padding: 5px 10px;
+    }
+}
+
+/* Additional tweaks for the menu container on mobile */
+@media screen and (max-width: 768px) {
+    .menu-title-container {
+        padding: 25px 20px;
+        width: 90%;
+    }
+}
+
+/* For very small screens, ensure everything fits */
+@media screen and (max-width: 320px) {
+    .gothic-bw-title {
+        font-size: 1em;
+    }
+
+    .menu-title-container {
+        padding: 20px 15px;
+    }
+}
+
+
+/* --- Mobile Responsive Styles for Popups (Characters & Projects) --- */
+
+@media screen and (max-width: 1200px) {
+
+    .characters-popup,
+    .projects-popup {
+        width: 90%;
+        height: 80%;
+    }
+}
+
+/* Stack columns vertically */
+@media screen and (max-width: 768px) {
+
+    /* Common grid adjustments */
+    .characters-grid,
+    .projects-grid {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+        height: calc(100% - 60px);
+        /* Adjust based on title/nav height */
+        overflow-y: auto;
+        /* Allow grid itself to scroll if needed */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Common list column adjustments */
+    .characters-list-column,
+    .projects-list-column {
+        width: 100%;
+        margin-right: 0;
+        flex-shrink: 0;
+        /* Prevent shrinking */
+        max-height: 35vh;
+        /* Limit height */
+        min-height: 150px;
+        /* Minimum height */
+        overflow-y: auto;
+        padding: 8px 15px;
+    }
+
+    /* Common details column adjustments */
+    .character-details-column,
+    .project-details-column {
+        width: 100%;
+        margin-top: 5px;
+        flex: 1;
+        /* Allow details to grow */
+        min-height: 0;
+        /* Allow shrinking */
+        overflow-y: auto;
+        /* Ensure details column itself can scroll */
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        padding: 8px 15px
+    }
+
+
+
+.character-details.active,
+.project-details.active {
+    height: auto;
+    /* Adjust height based on content */
+    min-height: 100%;
+    /* Try to fill the parent column */
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Common list adjustments */
+    .characters-list,
+    .projects-list {
+        /* Removed fixed flex property to allow column scrolling */
+        max-height: none;
+        overflow-y: visible;
+        /* Let the column handle scrolling */
+    }
+
+    /* Common popup full-screen adjustments */
+    .characters-popup,
+    .projects-popup {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        /* Prevent body scroll */
+    }
+
+    /* Common list title adjustments */
+    .characters-list-title,
+    .projects-list-title {
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    /* Common item adjustments */
+    .character-item,
+    .project-item {
+        padding: 8px;
+        margin-bottom: 5px;
+    }
+
+    .character-item:last-child,
+    .project-item:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Common close button positioning */
+    .close-button {
+        /* Affects both character and project popups */
+        top: 10px;
+        right: 10px;
+        z-index: 50;
+        /* Ensure it's above content */
+    }
+
+    /* Common popup title margin */
+    .popup-title {
+        margin: 10px 0;
+        font-size: 16px;
+        /* Make title smaller */
+        letter-spacing: 1px;
+    }
+
+    /* Hide decorative corners on mobile */
+    .characters-popup .pixel-decorator,
+    .projects-popup .pixel-decorator {
+        display: none;
+    }
+
+    /* Common Navigation Help */
+    .characters-navigation-help,
+    .projects-navigation-help {
+        padding: 8px 4px;
+        /* Compact padding */
+        flex-wrap: wrap;
+        justify-content: center;
+        position: sticky;
+        /* Keep nav visible */
+        bottom: 0;
+        background-color: #000000;
+        /* Ensure background */
+    }
+
+    .nav-help-item {
+        margin: 0 5px;
+        /* Reduce spacing */
+    }
+}
+
+/* Specific Mobile Adjustments for Characters */
+@media screen and (max-width: 768px) {
+    .character-details-column {
+        /* width: 100%; */ /* Already set */
+        /* margin-top: 5px; */ /* Already set */
+        flex: 1;
+        min-height: 0; /* Crucial */
+        overflow: hidden; /* Crucial */
+        display: flex; /* Added */
+        flex-direction: column; /* Added */
+        padding: 8px 15px; /* Keep padding consistent */
+    }
+
+    .character-details.active {
+        display: flex; /* Keep */
+        flex-direction: column; /* Keep */
+        flex: 1; /* Added - Make this fill the column */
+        min-height: 0; /* Added - Allow shrinking */
+        overflow-y: auto !important; /* THIS is the scroll container */
+        -webkit-overflow-scrolling: touch;
+        /* Remove height: auto and min-height: 100% */
+    }
+
+    
+    .character-details-card {
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* Allow card to fill .active container */
+        min-height: 0; /* Allow shrinking */
+        /* Removed height: 100%, overflow-y, etc. */
+        /* Removed min-height: 400px as it might conflict */
+    }
+
+    .character-description {
+        flex-grow: 1; /* Allow description to grow */
+        flex-shrink: 1; /* Allow description to shrink */
+        overflow: visible; /* Let parent scroll */
+        min-height: auto; /* Remove fixed min-heights */
+        padding-bottom: 20px; /* Keep space at bottom */
+        margin-top: 15px; /* Keep space below image */
+    }
+
+    .character-image-container {
+        flex-shrink: 0; /* Keep */
+    }
+
+    .character-bio {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .characters-navigation-help {
+        flex-shrink: 0; /* Prevent shrinking */
+        position: sticky; /* Stick to bottom of scrollable parent */
+        bottom: 0;
+        /* Ensure background is solid */
+        background-color: #000000;
+        /* Ensure padding is applied */
+        padding: 8px 4px;
+        /* Keep other nav help styles */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .character-image {
+        height: 180px;
+        width: 120px;
+    }
+
+    .character-role {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .character-bio {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .nav-help-item {
+        margin: 0 8px;
+    }
+
+    /* Character nav specific */
+}
+
+
+/* Specific Mobile Adjustments for Projects */
+@media screen and (max-width: 768px) {
+    .project-details.active {
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* Takes up available space in the column */
+        min-height: 0; /* Allows shrinking */
+        overflow-y: auto !important; /* THIS is the scroll container */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .project-details-column {
+        width: 100%;
+        margin-top: 15px;
+        flex: 1; /* Allow details column to take remaining space in the grid */
+        min-height: 0; /* Crucial for allowing column to shrink properly */
+        overflow: hidden; /* Hide anything that might accidentally overflow this container */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-description {
+        /* Allow description to grow and shrink, but don't give it internal scroll */
+        flex-grow: 1;
+        flex-shrink: 1; /* Allow shrinking if needed */
+        overflow: visible; /* Content should flow, parent scrolls */
+        min-height: auto; /* Don't force a minimum height */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding-bottom: 10px; /* Space below text */
+        margin-bottom: 0; /* Remove margin if any */
+    }
+
+    .project-actions {
+        margin-top: auto; /* Push actions to the bottom of the flex container */
+        flex-shrink: 0; /* Prevent actions container from shrinking */
+        position: static; /* Ensure it stays in the normal document flow */
+        padding-top: 15px; /* Space above buttons */
+        padding-bottom: 10px; /* Space below buttons */
+        /* Ensure background if needed */
+         background-color: #111111; /* Match parent background or choose appropriate */
+    }
+
+    .project-name, .project-stats {
+        flex-shrink: 0;
+    }
+
+    .project-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #333333;
+    }
+
+    .project-stat:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    .stat-label {
+        margin-bottom: 4px;
+        font-size: 10px;
+        color: #888888;
+    }
+
+    .stat-value {
+        width: 100%;
+        font-size: 11px;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .project-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .project-stats {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .action-button {
+        padding: 6px 12px;
+    }
+
+    .action-text {
+        font-size: 10px;
+    }
+
+    .projects-navigation-help .nav-help-item {
+        margin: 0 4px;
+        scale: 0.9;
+    }
+
+    /* Project nav specific */
+    .projects-navigation-help .nav-key {
+        font-size: 8px;
+        padding: 2px 4px;
+    }
+
+    .projects-navigation-help .nav-action {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    /* Hide third nav item if needed */
+    .projects-navigation-help .nav-help-item:nth-child(3) {
+        /* display: none; */
+        /* Uncomment if needed */
+    }
+}
+
+
+/* --- Mobile Responsive Styles for Progress Container --- */
+@media screen and (max-width: 768px) {
+    .loading-dots::after {
+        width: 20px;
+    }
+
+    .skill-bar-inner {
+        animation-duration: 1.2s;
+    }
+
+    .sparkle {
+        animation-duration: 1.5s;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .progress-container {
+        width: 90%;
+        max-width: none;
+        padding: 30px;
+    }
+
+    .progress-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .progress-container {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        padding: 20px 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        border-radius: 0;
+    }
+
+    .progress-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .level-info {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .progress-bar-container {
+        height: 32px;
+        border: 3px solid #DDDDDD;
+        margin-bottom: 10px;
+    }
+
+    .level-markers {
+        display: flex;
+        padding: 0 2px;
+        top: 0;
+        height: 100%;
+        align-items: center;
+    }
+
+    /* Adjust level marker position */
+    .level-marker {
+        width: 2px;
+        height: 100%;
+    }
+
+    /* Adjust level marker size */
+    .progress-markers {
+        margin-bottom: 20px;
+        margin-top: 2px;
+    }
+
+    .marker {
+        font-size: 10px;
+        padding-top: 12px;
+        line-height: 1.2;
+        hyphens: auto;
+        word-break: break-word;
+    }
+
+    .marker::before {
+        height: 8px;
+        width: 2px;
+    }
+
+    .marker.current::before {
+        height: 12px;
+        width: 3px;
+    }
+
+    .status-message {
+        font-size: 12px;
+        margin: 15px 0 20px;
+    }
+
+    .skill-stats-container {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .skill-stats-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stats-column {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .stats-column:last-child {
+        margin-bottom: 0;
+    }
+
+    .stat-category-title {
+        font-size: 12px;
+        margin-bottom: 10px;
+        padding-bottom: 3px;
+    }
+
+    .skill-bar-container {
+        margin-bottom: 10px;
+    }
+
+    .skill-name,
+    .skill-value {
+        font-size: 10px;
+    }
+
+    .special-skills-container {
+        padding-top: 12px;
+        margin-bottom: 18px;
+        border-top: 1px solid #444444;
+    }
+
+    .special-skills-title {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .special-skills-grid {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 10px;
+    }
+
+    .special-skill {
+        width: 47%;
+        margin: 0;
+    }
+
+    .special-skill-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 6px;
+    }
+
+    .achievements-container {
+        padding-top: 12px;
+        border-top: 1px solid #444444;
+    }
+
+    .achievement {
+        margin-bottom: 8px;
+        align-items: flex-start;
+    }
+
+    .achievement-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    .achievement-text {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .continue-btn-container {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .continue-btn-box {
+        padding: 12px 8px;
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .command-btn {
+        font-size: 14px;
+        width: 100%;
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    .progress-close-button {
+        top: 10px;
+        right: 10px;
+        z-index: 50;
+    }
+
+    .progress-container .pixel-decorator {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .progress-title {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .marker {
+        font-size: 8px;
+        hyphens: auto;
+        overflow-wrap: break-word;
+    }
+
+    .level-label,
+    .level-value {
+        font-size: 11px;
+    }
+
+    .status-message {
+        margin-bottom: 15px;
+    }
+
+    .sparkle {
+        width: 4px;
+        height: 4px;
+    }
+
+    .special-skill {
+        width: 48%;
+    }
+
+    .special-skill-name {
+        font-size: 8px;
+        letter-spacing: 0;
+    }
+
+    .special-skill-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .skill-bar-container {
+        margin-bottom: 6px;
+        align-items: center;
+    }
+
+    .skill-name {
+        width: 40%;
+        padding-right: 5px;
+        font-size: 9px;
+    }
+
+    .skill-bar-outer {
+        width: 50%;
+        height: 10px;
+        border: 1px solid #444444;
+    }
+
+    .skill-value {
+        width: 10%;
+        font-size: 9px;
+    }
+
+    .achievement-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .progress-close-button {
+        width: 28px;
+        height: 28px;
+    }
+
+    .continue-btn-box {
+        padding: 10px 6px;
+    }
+
+    .command-btn {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    #se1-marker,
+    #se2-marker {
+        font-size: 0;
+    }
+
+    /* Hide full text */
+    #se1-marker:after {
+        content: "SE I";
+        font-size: 8px;
+    }
+
+    #se2-marker:after {
+        content: "SE II";
+        font-size: 8px;
+    }
+}
+
+
+/* --- Mobile Responsive Styles for Diary Section --- */
+@media screen and (max-width: 1200px) {
+    .diary-inner-frame {
+        top: calc(5% + 25px);
+        left: calc(5% + 25px);
+        right: calc(5% + 25px);
+        bottom: calc(5% + 25px);
+    }
+
+    .diary-container {
+        top: calc(5% + 50px);
+        left: calc(5% + 50px);
+        right: calc(5% + 50px);
+        bottom: calc(5% + 50px + 42px);
+    }
+
+    .diary-title {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #diary-section {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .diary-window-frame {
+        width: 100%;
+        height: 100%;
+        border-width: 6px;
+        top: 0;
+        left: 0;
+        position: fixed;
+    }
+
+    .diary-inner-frame {
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+        border-width: 3px;
+    }
+
+    .diary-container {
+        position: fixed;
+        /* Change from absolute to fixed like diary-inner-frame */
+        top: 44px;
+        /* diary-inner-frame top (24px) + buffer (20px) */
+        left: 34px;
+        /* diary-inner-frame left (24px) + buffer (10px) */
+        right: 34px;
+        /* diary-inner-frame right (24px) + buffer (10px) */
+        bottom: 84px;
+        /* diary-inner-frame bottom (24px) + navigation height + buffer */
+        width: auto;
+        /* Let positioning determine width */
+        padding: 0 10px 0 5px;
+        /* Right padding for scrollbar, minimal left padding */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        box-sizing: border-box;
+    }
+
+    .diary-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .tech-projects-container {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    .tech-projects-title {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .tech-projects-content {
+        font-size: 12px;
+        line-height: 1.3;
+        letter-spacing: 0.8px;
+        overflow-wrap: break-word;
+        /* Add this */
+        word-wrap: break-word;
+        /* Add fallback */
+    }
+
+    .tech-projects-section {
+        margin-bottom: 12px;
+        padding-left: 12px;
+    }
+
+    .diary-entry {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-width: 3px;
+    }
+
+    .diary-date {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .diary-content {
+        font-size: 12px;
+        line-height: 1.6;
+        letter-spacing: 0.6px;
+        overflow-wrap: break-word;
+        /* Add this */
+        word-wrap: break-word;
+        /* Add fallback */
+    }
+
+    .diary-navigation-help {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px;
+        z-index: 10;
+    }
+
+    .diary-nav-help-item {
+        margin: 0 10px;
+    }
+
+    .diary-nav-key {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    .diary-nav-action {
+        font-size: 9px;
+    }
+
+    .diary-close-button {
+        top: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        z-index: 50;
+    }
+
+    .pixel-border.diary-top,
+    .pixel-border.diary-bottom {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .diary-inner-frame {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border-width: 2px;
+    }
+
+    .diary-container {
+        top: 36px;
+        /* diary-inner-frame top (20px) + buffer (16px) */
+        left: 25px;
+        /* diary-inner-frame left (20px) + buffer (5px) */
+        right: 25px;
+        /* diary-inner-frame right (20px) + buffer (5px) */
+        bottom: 75px;
+        /* Adjusted for smaller screens */
+    }
+
+    .diary-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .tech-projects-container {
+        padding: 12px;
+        margin-bottom: 20px;
+        border-width: 3px;
+    }
+
+    .tech-projects-container::before {
+        font-size: 10px;
+        top: -10px;
+        padding: 1px 8px;
+        border-width: 1px;
+    }
+
+    /* Ensure wrapping persists on smaller screens */
+    .tech-projects-content {
+        font-size: 11px;
+        /* Adjust font size if needed */
+        line-height: 1.4;
+        /* Adjust line height */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .diary-entry {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-width: 2px;
+    }
+
+    .diary-date {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .diary-content {
+        font-size: 11px;
+        line-height: 1.5;
+        overflow-wrap: break-word;
+        /* Add this */
+        word-wrap: break-word;
+        /* Add fallback */
+    }
+
+    .diary-entry::before,
+    .diary-entry::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    .diary-entry::before {
+        top: -5px;
+        left: -5px;
+    }
+
+    .diary-entry::after {
+        bottom: -5px;
+        right: -5px;
+    }
+
+    .diary-nav-key,
+    .diary-nav-action {
+        font-size: 8px;
+    }
+
+    .diary-nav-key {
+        padding: 2px 4px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .diary-container {
+        top: 32px;
+        /* Further adjusted */
+        left: 22px;
+        right: 22px;
+        bottom: 70px;
+        padding-right: 5px;
+        /* Reduce scrollbar padding */
+    }
+
+    .diary-title {
+        font-size: 16px;
+    }
+
+    .diary-content,
+    .diary-date {
+        font-size: 10px;
+    }
+
+    /* Ensure wrapping persists on very small screens */
+    .tech-projects-content,
+    .diary-content {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .tech-projects-section::before {
+        font-size: 8px;
+    }
+}
+
+
+/* --- Mobile Responsive Styles for Landing Page --- */
+@media screen and (max-width: 1200px) {
+    .window-frame {
+        width: 95%;
+        height: 95%;
+    }
+
+    .inner-frame {
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+    }
+
+    .menu-title-container {
+        width: 80%;
+        max-width: 600px;
+        padding: 30px 35px;
+    }
+
+    #landing .title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    /* Landing specific title */
+    #landing .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 50px;
+        margin-top: 25px;
+    }
+
+    #landing .menu-option {
+        font-size: 1.1rem;
+        padding: 8px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .inner-frame {
+        background-image: url('../background-mobile.png');
+        background-color: #111111;
+    }
+
+    /* Adjusted path */
+    .window-frame {
+        width: 100%;
+        height: 100%;
+        border-width: 6px;
+        top: 0;
+        left: 0;
+    }
+
+    /* Adjust frame */
+    .inner-frame {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border-width: 3px;
+    }
+
+    .menu-title-container {
+        width: 90%;
+        padding: 25px 20px;
+        top: 48%;
+    }
+
+    #landing .title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    #landing .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+    }
+
+    #landing .menu-option {
+        font-size: 1rem;
+        margin: 15px 0;
+        padding: 6px 20px;
+    }
+
+    .music-player {
+        bottom: 25px;
+        left: 25px;
+    }
+
+    .pixel-border.top,
+    .pixel-border.bottom {
+        width: 70%;
+    }
+
+    /* Landing borders */
+    .clouds {
+        opacity: 0.3;
+    }
+
+    .menu-option::before {
+        left: 2px;
+    }
+
+    .menu-option:hover::before {
+        left: 5px;
+    }
+
+    .menu-option:active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .copyright {
+        bottom: 5px;
+        right: 5px;
+        font-size: 0.4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .inner-frame {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-width: 2px;
+    }
+
+    .window-frame {
+        border-width: 4px;
+    }
+
+    .menu-title-container {
+        padding: 20px 15px;
+    }
+
+    #landing .title {
+        font-size: 1.5rem;
+        text-shadow: 3px 3px 0px #000000;
+    }
+
+    #landing .subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 30px;
+        margin-top: 15px;
+    }
+
+    #landing .menu-option {
+        font-size: 0.9rem;
+        margin: 12px 0;
+        padding: 5px 15px;
+    }
+
+    .pixel-border.top,
+    .pixel-border.bottom {
+        display: none;
+    }
+
+    /* Hide landing borders */
+    .clouds {
+        opacity: 0.2;
+    }
+
+    .music-controls {
+        transform: scale(0.9);
+        transform-origin: bottom left;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #landing .title {
+        font-size: 1.2rem;
+        text-shadow: 2px 2px 0px #000000;
+    }
+
+    #landing .subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+    }
+
+    #landing .menu-option {
+        font-size: 0.8rem;
+        margin: 10px 0;
+    }
+
+    .menu-title-container {
+        max-height: 80%;
+        overflow-y: auto;
+        padding: 15px 12px;
+    }
+
+    .music-controls {
+        transform: scale(0.8);
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+    /* Touch device adjustments */
+    .menu-option {
+        padding: 12px 20px;
+        margin: 15px 0;
+    }
+
+    .music-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+
+    /* Landscape mobile */
+    .menu-title-container {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        padding: 15px;
+    }
+
+    #landing .title {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    #landing .subtitle {
+        margin: 10px 0 25px 0;
+    }
+
+    #landing .menu-option {
+        margin: 8px 0;
+    }
+}

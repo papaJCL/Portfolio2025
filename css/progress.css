@@ -1,0 +1,584 @@
+/* Progress Overlay */
+.progress-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 25;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progress-overlay.show {
+    display: flex;
+  }
+  
+  /* Progress container as overlay */
+  .progress-container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #000000;
+    border: 6px solid #DDDDDD;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    position: relative;
+    z-index: 26;
+  }
+  
+  .progress-title {
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 0px #000000;
+    letter-spacing: 1px;
+    font-size: 28px;
+  }
+  
+  .level-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  
+  .level-label {
+    font-size: 14px;
+    color: #AAAAAA;
+  }
+  
+  .level-value {
+    font-size: 14px;
+    color: #FFFFFF;
+  }
+  
+  .progress-bar-container {
+    height: 48px;
+    background-color: #000000;
+    border: 4px solid #DDDDDD;
+    position: relative;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: repeating-linear-gradient(45deg,
+        #FFFFFF,
+        #FFFFFF 10px,
+        #AAAAAA 10px,
+        #AAAAAA 20px);
+    width: 0; /* Start at 0% */
+    position: relative;
+    transition: width 0.1s linear;
+  }
+  
+  .level-markers {
+    position: absolute;
+    top: 34px; /* Needs verification based on final layout */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+    pointer-events: none;
+  }
+  
+  .level-marker {
+    width: 3px;
+    height: 40px; /* Needs verification based on final layout */
+    background-color: #333333;
+  }
+  
+  
+  .progress-markers {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .marker {
+    font-size: 12px;
+    color: #AAAAAA;
+    position: relative;
+    padding-top: 18px;
+    text-align: center;
+    width: 33.33%; /* Each marker takes up 1/3 of the space */
+  }
+  
+  .marker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 12px;
+    background-color: #DDDDDD;
+  }
+  
+  .marker.current {
+    color: #FFFFFF;
+  }
+  
+  .marker.current::before {
+    height: 18px;
+    width: 4px;
+  }
+  
+  .marker.completed {
+    color: #DDDDDD;
+  }
+  
+  
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #FFFFFF;
+    opacity: 0;
+    animation: sparkleAnimation 2s infinite;
+  }
+  
+  @keyframes sparkleAnimation {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+  
+  
+  .status-message {
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  /* Skill stats visibility control */
+  .skill-stats-container {
+    border: 4px solid #DDDDDD;
+    background-color: #000000;
+    padding: 25px;
+    margin-top: 30px;
+    position: relative;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Make pixel decorators for skill container corners */
+  .skill-stats-container::before,
+  .skill-stats-container::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #DDDDDD;
+  }
+  
+  .skill-stats-container::before {
+    top: 8px;
+    left: 8px;
+  }
+  
+  .skill-stats-container::after {
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  
+  .skill-stats-title {
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0px #000000;
+    letter-spacing: 2px;
+  }
+  
+  /* Stats Grid Layout */
+  .stats-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .stats-column {
+    width: 48%;
+  }
+  
+  .stat-category-title {
+    font-size: 14px;
+    color: #AAAAAA;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #444444;
+    padding-bottom: 5px;
+  }
+  
+  /* Initially hide skill bars and special skills */
+  .skill-bar-container,
+  .special-skills-container,
+  .achievements-container {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  /* Class to show skill bars with animation */
+  .skill-bar-container.show,
+  .special-skills-container.show,
+  .achievements-container.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Skill Bar Styles */
+  .skill-bar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .skill-name {
+    width: 40%;
+    font-size: 12px;
+    color: #CCCCCC;
+    padding-right: 10px;
+  }
+  
+  .skill-bar-outer {
+    width: 50%;
+    height: 12px;
+    background-color: #222222;
+    border: 2px solid #444444;
+  }
+  
+  .skill-bar-inner {
+    height: 100%;
+    background: repeating-linear-gradient(45deg,
+        #FFFFFF,
+        #FFFFFF 6px,
+        #AAAAAA 6px,
+        #AAAAAA 12px);
+    /* Apply animation */
+    animation: fillSkillBar 1.5s ease-out forwards;
+    width: 0; /* Start at 0 width */
+  }
+  
+  .skill-bar-inner.attribute {
+    background: repeating-linear-gradient(45deg,
+        #DDDDDD,
+        #DDDDDD 6px,
+        #999999 6px,
+        #999999 12px);
+  }
+  
+  .skill-value {
+    width: 10%;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: right;
+  }
+  
+  /* Animation for skill bars */
+  @keyframes fillSkillBar {
+    from {
+      width: 0%;
+    }
+    to {
+      /* Target width is set via inline style in JS or HTML */
+      width: var(--target-width);
+    }
+  }
+  
+  
+  /* Special Skills Section */
+  .special-skills-container {
+    border-top: 2px solid #444444;
+    padding-top: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .special-skills-title {
+    font-size: 16px;
+    color: #AAAAAA;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .special-skills-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .special-skill {
+    text-align: center;
+    margin: 0 10px 15px;
+    width: 120px;
+  }
+  
+  .special-skill-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #DDDDDD;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222222;
+  }
+  
+  .special-skill-name {
+    font-size: 11px;
+    color: #FFFFFF;
+  }
+  
+  /* Pixel Art Icons */
+  .pixel-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  
+  .code-icon::before,
+  .code-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #DDDDDD;
+  }
+  
+  .code-icon::before {
+    width: 16px;
+    height: 2px;
+    top: 8px;
+    left: 4px;
+    box-shadow: 0 6px 0 #DDDDDD;
+  }
+  
+  .code-icon::after {
+    width: 6px;
+    height: 2px;
+    top: 5px;
+    left: 4px;
+    box-shadow: 0 6px 0 #DDDDDD, 0 12px 0 #DDDDDD, 10px 3px 0 #DDDDDD, 10px 9px 0 #DDDDDD;
+  }
+  
+  /* CI/CD Icon */
+  .cicd-icon::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #DDDDDD;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+  }
+  
+  .cicd-icon::after {
+    content: '';
+    position: absolute;
+    border-top: 6px solid #DDDDDD;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    top: 8px;
+    left: 6px;
+  }
+  
+  /* Full Stack Icon */
+  .fullstack-icon::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background-color: #DDDDDD;
+    top: 4px;
+    left: 2px;
+    box-shadow: 0 6px 0 #DDDDDD, 0 12px 0 #DDDDDD;
+  }
+  
+  .fullstack-icon::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #DDDDDD;
+    top: 8px;
+    left: 18px;
+  }
+  
+  /* Designer Icon */
+  .designer-icon::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #DDDDDD;
+    top: 5px;
+    left: 5px;
+    transform: rotate(45deg);
+  }
+  
+  .designer-icon::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #DDDDDD;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .performance-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  
+  .performance-icon::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #DDDDDD;
+    top: 3px;
+    left: 2px;
+  }
+  
+  .performance-icon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background-color: #000000;
+    top: 12px;
+    left: 11px;
+  }
+  
+  /* Achievement Styles */
+  .achievements-container {
+    border-top: 2px solid #444444;
+    padding-top: 15px;
+  }
+  
+  .achievement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .achievement-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    position: relative;
+  }
+  
+  .achievement-star {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #FFFFFF;
+    top: 0;
+    left: 4px;
+    transform: rotate(180deg);
+    animation: starPulse 3s infinite; /* Apply animation */
+  }
+  
+  .achievement-star::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #FFFFFF;
+    top: 0;
+    left: -8px;
+  }
+  
+  .achievement-text {
+    font-size: 12px;
+    color: #DDDDDD;
+  }
+  
+  /* Star pulse animation for achievement stars */
+  @keyframes starPulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: rotate(180deg) scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: rotate(180deg) scale(0.8);
+    }
+  }
+  
+  /* Continue button after progress animation */
+  .continue-btn-container {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .continue-btn-box {
+    background-color: #555555;
+    border: 4px solid #777777;
+    padding: 10px;
+    display: block;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    opacity: 0.7;
+    transition: all 0.5s ease;
+  }
+  
+  .continue-btn-box.active {
+    background-color: #CCCCCC;
+    border-color: #DDDDDD;
+    opacity: 1;
+    animation: buttonFlash 2s infinite;
+  }
+  
+  /* Flash animation for the continue button */
+  @keyframes buttonFlash {
+    0%,
+    100% {
+      background-color: #CCCCCC;
+    }
+    50% {
+      background-color: #AAAAAA;
+    }
+  }
+  
+  .command-btn {
+    background-color: transparent;
+    border: none;
+    color: #888888;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    cursor: default;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    pointer-events: none;
+    transition: all 0.5s ease;
+  }
+  
+  .command-btn.active {
+    color: #000000;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    pointer-events: all;
+  }
