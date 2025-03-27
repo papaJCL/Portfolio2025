@@ -2162,188 +2162,229 @@
     }
 
     /* Mobile layout for projects - stack columns vertically */
-    @media screen and (max-width: 768px) {
-      .projects-grid {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 5px;
-        padding: 10px 10px;
-        /* Reduced padding */
-        height: auto;
-        min-height: 60vh;
-        touch-action: pan-y;
-        /* Explicitly enable vertical touch scrolling */
-      }
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px; /* Reduced from 10px to minimize space between columns */
+    padding: 10px 10px; /* Reduced padding */
+    height: auto;
+    min-height: 60vh;
+    touch-action: pan-y;
+    /* Explicitly enable vertical touch scrolling */
+  }
 
-      /* Adjust popup title size for mobile */
-      .popup-title {
-        font-size: 16px !important;
-      }
+  /* Adjust popup title size for mobile */
+  .popup-title {
+    font-size: 16px !important;
+    margin: 10px 0 !important;
+    letter-spacing: 1px !important;
+  }
 
-      .projects-list-column,
-      .project-details-column {
-        height: auto;
-        width: 100%;
-        margin-right: 0;
-        min-height: auto;
-        max-height: none;
-        flex: 0 0 auto;
-      }
+  .projects-list-column,
+  .project-details-column {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+    min-height: auto;
+    max-height: none;
+    flex: 0 0 auto;
+    /* Don't grow, don't shrink, size to content */
+  }
 
-      .projects-list-column {
-        height: auto;
-        min-height: auto;
-        max-height: 35vh;
-        flex: 0 0 auto;
-        overflow-y: auto;
-        /* Don't grow, don't shrink, size to content */
-      }
+  .projects-list-column {
+    height: auto;
+    min-height: auto;
+    max-height: 35vh;
+    flex: 0 0 auto;
+    overflow-y: auto;
+    /* Don't grow, don't shrink, size to content */
+  }
 
-      .project-details-column {
-        flex: 1 1 auto;
-        /* Grow, shrink, and base on content */
-        margin-top: 5px;
-        /* Add space between columns */
-        height: auto;
-        max-height: none;
-        min-height: 0;
-        /* Let it size based on available space */
-        -webkit-overflow-scrolling: touch;
-        /* Smooth scrolling on iOS */
-        overscroll-behavior: contain;
-        /* Prevent scroll chaining */
-        overflow-y: auto !important;
-        /* Force scrolling */
-        height: auto;
-        max-height: 65vh;
-      }
+  .project-details-column {
+    flex: 1 1 auto;
+    /* Grow, shrink, and base on content */
+    margin-top: 5px;
+    /* Reduced space between columns */
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    /* Let it size based on available space */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
+    overscroll-behavior: contain;
+    /* Prevent scroll chaining */
+    overflow-y: auto !important;
+    /* Force scrolling */
+    height: auto;
+    max-height: 65vh;
+  }
 
-      /* Make project details fill the available space */
-      .project-details.active {
-        display: flex !important;
-        /* Force display flex */
-        flex-direction: column;
-        height: auto !important;
-        flex: 1;
-        min-height: 100%;
-        overflow: visible !important
-      }
+  /* Make project details fill the available space */
+  .project-details.active {
+    display: flex !important;
+    /* Force display flex */
+    flex-direction: column;
+    height: auto !important;
+    flex: 1;
+    min-height: 100%;
+    overflow: visible !important
+  }
 
-      .projects-list {
-        flex: 0 0 auto;
-        max-height: none;
-        overflow-y: visible;
-      }
+  .projects-list {
+    flex: 0 0 auto;
+    max-height: none;
+    overflow-y: visible;
+  }
 
-      /* Adjust popup height to accommodate stacked layout */
-      .projects-popup {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        border: none;
-        box-shadow: none;
-        border-radius: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* Taller on mobile */
-      }
+  /* Adjust popup height to accommodate stacked layout */
+  .projects-popup {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Taller on mobile */
+  }
 
-      /* Make the project details container fill all available space */
-      .project-details-card {
-        display: flex;
-        flex-direction: column;
-        min-height: 400px;
-        overflow-y: scroll !important;
-        /* Force scrolling capability */
-        -webkit-overflow-scrolling: touch;
-        /* Enable momentum scrolling on iOS */
-        height: 100% !important;
-        position: relative;
-        touch-action: pan-y;
-        /* Explicitly enable vertical scrolling for touch */
-      }
+  /* Make the project details container fill all available space */
+  .project-details-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    overflow-y: scroll !important;
+    /* Force scrolling capability */
+    -webkit-overflow-scrolling: touch;
+    /* Enable momentum scrolling on iOS */
+    height: 100% !important;
+    position: relative;
+    touch-action: pan-y;
+    /* Explicitly enable vertical scrolling for touch */
+  }
 
-      /* Project description takes remaining space */
-      .project-description {
-        -webkit-overflow-scrolling: touch;
-        overflow-y: visible !important;
-        flex: 1;
-        overflow-y: auto;
-        margin-bottom: 20px;
-        box-sizing: border-box;
-        padding-bottom: 60px;
-        /* Add extra padding at bottom for easier scrolling */
-        height: auto !important;
-        /* Auto height to fit content */
-        min-height: auto !important;
-        /* Allow it to be as small as needed */
-        max-height: none !important;
-        /* No maximum height */
-        overflow: visible !important;
-        /* Don't scroll within this element */
-        display: block !important;
-        /* Change from flex to block */
-        width: 100%;
-        /* Full width */
-      }
+  /* Project description takes remaining space */
+  .project-description {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: visible !important;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding-bottom: 60px;
+    /* Add extra padding at bottom for easier scrolling */
+    height: auto !important;
+    /* Auto height to fit content */
+    min-height: auto !important;
+    /* Allow it to be as small as needed */
+    max-height: none !important;
+    /* No maximum height */
+    overflow: visible !important;
+    /* Don't scroll within this element */
+    display: block !important;
+    /* Change from flex to block */
+    width: 100%;
+    /* Full width */
+  }
 
-      .projects-list-title {
-        padding-bottom: 5px;
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
+  .projects-list-title {
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
 
-      /* Make the project items a bit more compact */
-      .project-item {
-        padding: 8px;
-        margin-bottom: 5px;
-      }
+  /* Make the project items a bit more compact */
+  .project-item {
+    padding: 8px;
+    margin-bottom: 5px;
+  }
 
-      /* Last project item has no bottom margin */
-      .project-item:last-child {
-        margin-bottom: 0;
-      }
+  /* Last project item has no bottom margin */
+  .project-item:last-child {
+    margin-bottom: 0;
+  }
 
-      .projects-popup .pixel-decorator {
-        display: none;
-        /* Hide decorative corners on mobile fullscreen */
-      }
+  .projects-popup .pixel-decorator {
+    display: none;
+    /* Hide decorative corners on mobile fullscreen */
+  }
 
-      .projects-popup {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
+  .projects-popup {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-      /* Project actions positioning */
-      .project-actions {
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .project-details {
-        max-height: 100%;
-      }
-
-      /* Fix navigation help bar for all mobile sizes */
-      .projects-navigation-help {
-        padding: 6px 4px;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 100%;
-        overflow: hidden;
-      }
-
-      .projects-list-title {
-        padding-bottom: 5px;
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
-
+  /* Project actions positioning */
+  .project-actions {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  /* Fix navigation help bar for all mobile sizes */
+  .projects-navigation-help {
+    padding: 6px 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Hide the third navigation help item on very small screens to prevent overflow */
+  @media screen and (max-width: 360px) {
+    .nav-help-item:nth-child(3) {
+      display: none;
     }
+  }
+}
+
+/* Additional adjustments for even smaller screens */
+@media screen and (max-width: 480px) {
+  .project-name {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .project-stats {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .action-button {
+    padding: 6px 12px;
+  }
+  
+  .action-text {
+    font-size: 10px;
+  }
+  
+  /* Fix for navigation help bar */
+  .projects-navigation-help {
+    padding: 6px 4px;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+  }
+  
+  .nav-help-item {
+    margin: 0 4px;
+    font-size: 8px;
+    scale: 0.9;
+  }
+  
+  .nav-key {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .nav-action {
+    font-size: 8px;
+  }
+}
 
     /* Custom scrollbar for project description */
     .project-description::-webkit-scrollbar {
@@ -2954,7 +2995,7 @@
     <!-- JRPG-style popup container -->
     <div class="characters-popup">
       <!-- Title at the top -->
-      <div class="popup-title">CHARACTER INFORMATION</div>
+      <div class="popup-title">CHARACTER BIO</div>
 
       <!-- Close button -->
       <div class="close-button" id="close-characters-btn"></div>
