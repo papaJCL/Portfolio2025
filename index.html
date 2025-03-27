@@ -1729,8 +1729,10 @@
         display: flex !important;
         /* Force display flex */
         flex-direction: column;
-        height: 100%;
+        height: auto !important;
         flex: 1;
+        min-height: 100%;
+        overflow: visible !important
       }
 
       .characters-list {
@@ -1764,7 +1766,6 @@
         overflow-y: scroll !important; /* Force scrolling capability */
     -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
     height: 100% !important;
-    max-height: 60vh !important; /* Set maximum height to force scrollbar */
     position: relative;
     touch-action: pan-y; /* Explicitly enable vertical scrolling for touch */
         /* Minimum height to ensure visibility */
@@ -1911,7 +1912,9 @@
       border: 3px solid #555555;
       margin-top: 15px;
       flex: 1;
-      overflow-y: auto;/
+      overflow-y: auto;
+      max-height: none;
+      height: auto;
     }
 
     .character-role {
