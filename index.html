@@ -2371,6 +2371,374 @@
   }
 }
 
+/* Mobile Responsive Styles for Progress Container */
+
+/* Fix for loading animations */
+@media screen and (max-width: 768px) {
+  /* Adjust loading dots animation to be more compact */
+  .loading-dots::after {
+    width: 20px;
+  }
+  
+  /* Ensure skill bar animations work on mobile */
+  .skill-bar-inner {
+    animation-duration: 1.2s; /* Slightly faster animation */
+  }
+  
+  /* Fix for sparkle animations - make them visible but not too distracting */
+  .sparkle {
+    animation-duration: 1.5s;
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (max-width: 1200px) {
+  .progress-container {
+    width: 90%;
+    max-width: none;
+    padding: 30px;
+  }
+  
+  .progress-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  /* Progress container adjustments */
+  .progress-container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border: none;
+    box-shadow: none;
+    padding: 20px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Enable momentum scrolling on iOS */
+    overscroll-behavior: contain;
+    /* Prevent scroll chaining on mobile */
+    border-radius: 0;
+    /* Remove border radius for full screen */
+  }
+  
+  .progress-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Level info and progress bar */
+  .level-info {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .progress-bar-container {
+    height: 32px; /* Slightly smaller */
+    border: 3px solid #DDDDDD;
+    margin-bottom: 10px;
+  }
+  
+  /* Level markers inside the progress bar */
+  .level-markers {
+    display: flex;
+    padding: 0 2px; /* Reduce padding */
+  }
+  
+  .level-marker {
+    width: 2px; /* Slightly thinner */
+    height: 32px; /* Match container height */
+  }
+  
+  /* Adjust progress markers */
+  .progress-markers {
+    margin-bottom: 20px;
+    margin-top: 2px;
+  }
+  
+  .marker {
+    font-size: 10px;
+    padding-top: 12px;
+    line-height: 1.2;
+    hyphens: auto; /* Allow hyphenation for long marker text */
+    word-break: break-word;
+  }
+  
+  .marker::before {
+    height: 8px;
+    width: 2px;
+  }
+  
+  .marker.current::before {
+    height: 12px;
+    width: 3px;
+  }
+  
+  /* Status message */
+  .status-message {
+    font-size: 12px;
+    margin: 15px 0 20px;
+  }
+  
+  /* Skill stats container */
+  .skill-stats-container {
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .skill-stats-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  /* Convert the stats grid to column layout on mobile */
+  .stats-grid {
+    flex-direction: column;
+    gap: 10px; /* Add gap between columns when stacked */
+  }
+  
+  .stats-column {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .stats-column:last-child {
+    margin-bottom: 0; /* Remove margin from last column */
+  }
+  
+  .stat-category-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+  }
+  
+  /* Make skill bars more compact */
+  .skill-bar-container {
+    margin-bottom: 10px;
+  }
+  
+  .skill-name {
+    font-size: 10px;
+  }
+  
+  .skill-value {
+    font-size: 10px;
+  }
+  
+  /* Special skills grid */
+  .special-skills-container {
+    padding-top: 12px;
+    margin-bottom: 18px;
+    border-top: 1px solid #444444; /* Thinner border */
+  }
+  
+  .special-skills-title {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  
+  .special-skills-grid {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 10px; /* Add row gap for better spacing */
+  }
+  
+  .special-skill {
+    width: 47%; /* Slightly wider */
+    margin: 0; /* Remove default margins */
+  }
+  
+  .special-skill-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+  }
+  
+  /* Achievements more compact */
+  .achievements-container {
+    padding-top: 12px;
+    border-top: 1px solid #444444;
+  }
+  
+  .achievement {
+    margin-bottom: 8px;
+    align-items: flex-start; /* Align to top for better text wrapping */
+  }
+  
+  .achievement-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  
+  .achievement-text {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  
+  /* Continue button */
+  .continue-btn-container {
+    margin-top: 20px;
+    margin-bottom: 40px; /* Add bottom margin for smaller screens to ensure button is visible */
+  }
+  
+  .continue-btn-box {
+    padding: 12px 8px; /* More vertical padding for better touch target */
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); /* Reduced shadow */
+  }
+  
+  .continue-btn-box.active {
+    background-color: #CCCCCC;
+    border-color: #DDDDDD;
+    opacity: 1;
+    animation: buttonFlash 2s infinite;
+  }
+  
+  .command-btn {
+    font-size: 14px;
+    width: 100%; /* Make the button fill the container */
+    padding: 5px 0; /* Add padding */
+    text-align: center; /* Center the text */
+  }
+  
+  .command-btn.active {
+    color: #000000;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    pointer-events: all;
+  }
+  
+  /* Close button position */
+  .progress-close-button {
+    top: 10px;
+    right: 10px;
+    z-index: 50;
+  }
+  
+  /* Remove decorative corners on mobile */
+  .progress-container .pixel-decorator {
+    display: none;
+  }
+}
+
+/* Even smaller screens adjustments */
+@media screen and (max-width: 480px) {
+  .progress-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  /* Ensure SE1 and SE2 text wraps on small screens */
+  .marker {
+    font-size: 8px;
+    text-align: center;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  /* Hide "SOFTWARE ENGINEER" text on extremely small screens */
+  @media screen and (max-width: 320px) {
+    #se1-marker, #se2-marker {
+      font-size: 0;
+    }
+    #se1-marker:after {
+      content: "SE I";
+      font-size: 8px;
+    }
+    #se2-marker:after {
+      content: "SE II";
+      font-size: 8px;
+    }
+  }
+  
+  .level-label, .level-value {
+    font-size: 11px;
+  }
+  
+  /* Status message */
+  .status-message {
+    margin-bottom: 15px; 
+  }
+  
+  /* Custom sparkles and decorations */
+  .sparkle {
+    width: 4px;
+    height: 4px;
+  }
+  
+  /* Special skills adjustments */
+  .special-skill {
+    width: 48%;  /* Slightly wider to fit better */
+  }
+  
+  .special-skill-name {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  
+  .special-skill-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* More compact skill bars */
+  .skill-bar-container {
+    height: auto;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+  
+  .skill-name {
+    width: 40%;
+    padding-right: 5px;
+    font-size: 9px;
+  }
+  
+  .skill-bar-outer {
+    width: 50%;
+    height: 10px;
+    border: 1px solid #444444;
+  }
+  
+  .skill-value {
+    width: 10%;
+    font-size: 9px;
+  }
+  
+  /* Make achievement icons smaller */
+  .achievement-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Make close button smaller but more visible */
+  .progress-close-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Continue button */
+  .continue-btn-box {
+    padding: 10px 6px;
+  }
+  
+  .command-btn {
+    font-size: 12px;
+  }
+}
+
 /* Additional adjustments for even smaller screens */
 @media screen and (max-width: 480px) {
   .project-name {
