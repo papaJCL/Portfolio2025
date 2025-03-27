@@ -3035,6 +3035,252 @@
   }
 }
 
+/* Mobile Responsive Styles for Landing Page */
+
+/* Tablet adjustments */
+@media screen and (max-width: 1200px) {
+  .window-frame {
+    width: 95%;
+    height: 95%;
+  }
+  
+  .inner-frame {
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+  }
+  
+  .menu-title-container {
+    width: 80%;
+    max-width: 600px;
+    padding: 30px 35px;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+    margin-top: 25px;
+  }
+  
+  .menu-option {
+    font-size: 1.1rem;
+    padding: 8px 30px;
+  }
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  /* Hide background image for mobile */
+  .inner-frame {
+    background-image: url('background-mobile.png');
+    background-color: #111111;
+  }
+  
+  /* Adjust window frame for better mobile proportions */
+  .window-frame {
+    width: 100%;
+    height: 100%;
+    border-width: 6px;
+  }
+  
+  .inner-frame {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-width: 3px;
+  }
+  
+  /* Center menu container */
+  .menu-title-container {
+    width: 90%;
+    padding: 25px 20px;
+    top: 48%;
+  }
+  
+  /* Adjust text sizes */
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+  }
+  
+  /* More compact menu options */
+  .menu-option {
+    font-size: 1rem;
+    margin: 15px 0;
+    padding: 6px 20px;
+  }
+  
+  /* Music player positioning for mobile */
+  .music-player {
+    bottom: 25px;
+    left: 25px;
+  }
+  
+  /* Adjust decorative elements */
+  .pixel-border {
+    width: 70%;
+  }
+  
+  /* Simplified cloud animation */
+  .clouds {
+    opacity: 0.3;
+  }
+  
+  /* Ensure menu options have appropriate hover areas for touch */
+  .menu-option::before {
+    left: 2px;
+  }
+  
+  .menu-option:hover::before {
+    left: 5px;
+  }
+  
+  /* Add tap highlight effect for mobile */
+  .menu-option:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Copyright position adjustment */
+  .copyright {
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.4rem;
+  }
+}
+
+/* Even smaller screens adjustments */
+@media screen and (max-width: 480px) {
+  /* Further reduce sizes */
+  .inner-frame {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-width: 2px;
+  }
+  
+  .window-frame {
+    border-width: 4px;
+  }
+  
+  .menu-title-container {
+    padding: 20px 15px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    text-shadow: 3px 3px 0px #000000;
+  }
+  
+  .subtitle {
+    font-size: 0.7rem;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+  
+  .menu-option {
+    font-size: 0.9rem;
+    margin: 12px 0;
+    padding: 5px 15px;
+  }
+  
+  /* Remove decorative elements that take up space */
+  .pixel-border {
+    display: none;
+  }
+  
+  /* Simplified clouds */
+  .clouds {
+    opacity: 0.2;
+  }
+  
+  /* Music player scaling */
+  .music-controls {
+    transform: scale(0.9);
+    transform-origin: bottom left;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 375px) {
+  .title {
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 0px #000000;
+  }
+  
+  .subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0;
+  }
+  
+  .menu-option {
+    font-size: 0.8rem;
+    margin: 10px 0;
+  }
+  
+  /* Ensure the menu container doesn't overflow */
+  .menu-title-container {
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 15px 12px;
+  }
+  
+  /* Scale down music player */
+  .music-controls {
+    transform: scale(0.8);
+  }
+}
+
+/* Ensure touch targets are large enough */
+@media (hover: none) and (pointer: coarse) {
+  .menu-option {
+    padding: 12px 20px;
+    margin: 15px 0;
+  }
+  
+  .music-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  .menu-title-container {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    margin: 10px 0 25px 0;
+  }
+  
+  .menu-option {
+    margin: 8px 0;
+  }
+}
+
     /* Custom scrollbar for project description */
     .project-description::-webkit-scrollbar {
       width: 6px;
@@ -4761,6 +5007,59 @@
         }
       }
     });
+
+    // Add this script to prevent music functionality on mobile devices
+document.addEventListener('DOMContentLoaded', function() {
+  // Simple mobile detection
+  function isMobileDevice() {
+    return (window.innerWidth <= 768) || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+  
+  if (isMobileDevice()) {
+    // Disable music functionality
+    const musicPlayer = document.querySelector('.music-player');
+    if (musicPlayer) {
+      // Hide the player completely with inline style as backup to CSS
+      musicPlayer.style.display = 'none';
+      
+      // Disable the audio element
+      const audioElement = document.getElementById('background-music');
+      if (audioElement) {
+        // Remove the source to prevent any loading
+        audioElement.innerHTML = '';
+        audioElement.load(); // Force reload without source
+        
+        // Disable autoplay and loop attributes
+        audioElement.removeAttribute('loop');
+        audioElement.autoplay = false;
+        
+        // Override play method to prevent playing
+        audioElement.play = function() {
+          return new Promise((resolve) => {
+            resolve();
+          });
+        };
+      }
+      
+      // Nullify the toggleMusic function
+      window.toggleMusic = function() {
+        return false;
+      };
+      
+      // Disable music initialization on interaction
+      window.musicInitiated = true; // Prevent initial music playing
+      window.initMusicOnInteraction = function() {
+        return false;
+      };
+      
+      // Remove any existing event listeners that might trigger music
+      // (This is a simplified approach - event listeners added directly to elements will still exist)
+      document.removeEventListener('click', initMusicOnInteraction);
+      document.removeEventListener('keydown', initMusicOnInteraction);
+    }
+  }
+});
   </script>
 </body>
 
