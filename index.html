@@ -2162,188 +2162,878 @@
     }
 
     /* Mobile layout for projects - stack columns vertically */
-    @media screen and (max-width: 768px) {
-      .projects-grid {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 5px;
-        padding: 10px 10px;
-        /* Reduced padding */
-        height: auto;
-        min-height: 60vh;
-        touch-action: pan-y;
-        /* Explicitly enable vertical touch scrolling */
-      }
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px; /* Reduced from 10px to minimize space between columns */
+    padding: 10px 10px; /* Reduced padding */
+    height: auto;
+    min-height: 60vh;
+    touch-action: pan-y;
+    /* Explicitly enable vertical touch scrolling */
+  }
 
-      /* Adjust popup title size for mobile */
-      .popup-title {
-        font-size: 16px !important;
-      }
+  /* Adjust popup title size for mobile */
+  .popup-title {
+    font-size: 16px !important;
+    margin: 10px 0 !important;
+    letter-spacing: 1px !important;
+  }
 
-      .projects-list-column,
-      .project-details-column {
-        height: auto;
-        width: 100%;
-        margin-right: 0;
-        min-height: auto;
-        max-height: none;
-        flex: 0 0 auto;
-      }
+  .projects-list-column,
+  .project-details-column {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+    min-height: auto;
+    max-height: none;
+    flex: 0 0 auto;
+    /* Don't grow, don't shrink, size to content */
+  }
 
-      .projects-list-column {
-        height: auto;
-        min-height: auto;
-        max-height: 35vh;
-        flex: 0 0 auto;
-        overflow-y: auto;
-        /* Don't grow, don't shrink, size to content */
-      }
+  .projects-list-column {
+    height: auto;
+    min-height: auto;
+    max-height: 35vh;
+    flex: 0 0 auto;
+    overflow-y: auto;
+    /* Don't grow, don't shrink, size to content */
+  }
 
-      .project-details-column {
-        flex: 1 1 auto;
-        /* Grow, shrink, and base on content */
-        margin-top: 5px;
-        /* Add space between columns */
-        height: auto;
-        max-height: none;
-        min-height: 0;
-        /* Let it size based on available space */
-        -webkit-overflow-scrolling: touch;
-        /* Smooth scrolling on iOS */
-        overscroll-behavior: contain;
-        /* Prevent scroll chaining */
-        overflow-y: auto !important;
-        /* Force scrolling */
-        height: auto;
-        max-height: 65vh;
-      }
+  .project-details-column {
+    flex: 1 1 auto;
+    /* Grow, shrink, and base on content */
+    margin-top: 5px;
+    /* Reduced space between columns */
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    /* Let it size based on available space */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
+    overscroll-behavior: contain;
+    /* Prevent scroll chaining */
+    overflow-y: auto !important;
+    /* Force scrolling */
+    height: auto;
+    max-height: 65vh;
+  }
 
-      /* Make project details fill the available space */
-      .project-details.active {
-        display: flex !important;
-        /* Force display flex */
-        flex-direction: column;
-        height: auto !important;
-        flex: 1;
-        min-height: 100%;
-        overflow: visible !important
-      }
+  /* Make project details fill the available space */
+  .project-details.active {
+    display: flex !important;
+    /* Force display flex */
+    flex-direction: column;
+    height: auto !important;
+    flex: 1;
+    min-height: 100%;
+    overflow: visible !important
+  }
 
-      .projects-list {
-        flex: 0 0 auto;
-        max-height: none;
-        overflow-y: visible;
-      }
+  .projects-list {
+    flex: 0 0 auto;
+    max-height: none;
+    overflow-y: visible;
+  }
 
-      /* Adjust popup height to accommodate stacked layout */
-      .projects-popup {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        border: none;
-        box-shadow: none;
-        border-radius: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* Taller on mobile */
-      }
+  /* Adjust popup height to accommodate stacked layout */
+  .projects-popup {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Taller on mobile */
+  }
 
-      /* Make the project details container fill all available space */
-      .project-details-card {
-        display: flex;
-        flex-direction: column;
-        min-height: 400px;
-        overflow-y: scroll !important;
-        /* Force scrolling capability */
-        -webkit-overflow-scrolling: touch;
-        /* Enable momentum scrolling on iOS */
-        height: 100% !important;
-        position: relative;
-        touch-action: pan-y;
-        /* Explicitly enable vertical scrolling for touch */
-      }
+  /* Make the project details container fill all available space */
+  .project-details-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    overflow-y: scroll !important;
+    /* Force scrolling capability */
+    -webkit-overflow-scrolling: touch;
+    /* Enable momentum scrolling on iOS */
+    height: 100% !important;
+    position: relative;
+    touch-action: pan-y;
+    /* Explicitly enable vertical scrolling for touch */
+  }
 
-      /* Project description takes remaining space */
-      .project-description {
-        -webkit-overflow-scrolling: touch;
-        overflow-y: visible !important;
-        flex: 1;
-        overflow-y: auto;
-        margin-bottom: 20px;
-        box-sizing: border-box;
-        padding-bottom: 60px;
-        /* Add extra padding at bottom for easier scrolling */
-        height: auto !important;
-        /* Auto height to fit content */
-        min-height: auto !important;
-        /* Allow it to be as small as needed */
-        max-height: none !important;
-        /* No maximum height */
-        overflow: visible !important;
-        /* Don't scroll within this element */
-        display: block !important;
-        /* Change from flex to block */
-        width: 100%;
-        /* Full width */
-      }
+  /* Project description takes remaining space */
+  .project-description {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: visible !important;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding-bottom: 60px;
+    /* Add extra padding at bottom for easier scrolling */
+    height: auto !important;
+    /* Auto height to fit content */
+    min-height: auto !important;
+    /* Allow it to be as small as needed */
+    max-height: none !important;
+    /* No maximum height */
+    overflow: visible !important;
+    /* Don't scroll within this element */
+    display: block !important;
+    /* Change from flex to block */
+    width: 100%;
+    /* Full width */
+  }
 
-      .projects-list-title {
-        padding-bottom: 5px;
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
+  .projects-list-title {
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
 
-      /* Make the project items a bit more compact */
-      .project-item {
-        padding: 8px;
-        margin-bottom: 5px;
-      }
+  /* Make the project items a bit more compact */
+  .project-item {
+    padding: 8px;
+    margin-bottom: 5px;
+  }
 
-      /* Last project item has no bottom margin */
-      .project-item:last-child {
-        margin-bottom: 0;
-      }
+  /* Last project item has no bottom margin */
+  .project-item:last-child {
+    margin-bottom: 0;
+  }
 
-      .projects-popup .pixel-decorator {
-        display: none;
-        /* Hide decorative corners on mobile fullscreen */
-      }
+  .projects-popup .pixel-decorator {
+    display: none;
+    /* Hide decorative corners on mobile fullscreen */
+  }
 
-      .projects-popup {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
+  .projects-popup {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-      /* Project actions positioning */
-      .project-actions {
-        margin-bottom: 20px;
-        position: relative;
-      }
+  /* Project actions positioning */
+  .project-actions {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  /* Fix navigation help bar for all mobile sizes */
+  .projects-navigation-help {
+    padding: 6px 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
-      .project-details {
-        max-height: 100%;
-      }
-
-      /* Fix navigation help bar for all mobile sizes */
-      .projects-navigation-help {
-        padding: 6px 4px;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 100%;
-        overflow: hidden;
-      }
-
-      .projects-list-title {
-        padding-bottom: 5px;
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
-
+  .project-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333333;
+  }
+  
+  .project-stat:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .stat-label {
+    margin-bottom: 4px;
+    font-size: 10px;
+    color: #888888;
+  }
+  
+  .stat-value {
+    width: 100%;
+    font-size: 11px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  /* Hide the third navigation help item on very small screens to prevent overflow */
+  @media screen and (max-width: 360px) {
+    .nav-help-item:nth-child(3) {
+      display: none;
     }
+  }
+}
+
+/* Mobile Responsive Styles for Progress Container */
+
+/* Fix for loading animations */
+@media screen and (max-width: 768px) {
+  /* Adjust loading dots animation to be more compact */
+  .loading-dots::after {
+    width: 20px;
+  }
+  
+  /* Ensure skill bar animations work on mobile */
+  .skill-bar-inner {
+    animation-duration: 1.2s; /* Slightly faster animation */
+  }
+  
+  /* Fix for sparkle animations - make them visible but not too distracting */
+  .sparkle {
+    animation-duration: 1.5s;
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (max-width: 1200px) {
+  .progress-container {
+    width: 90%;
+    max-width: none;
+    padding: 30px;
+  }
+  
+  .progress-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  /* Progress container adjustments */
+  .progress-container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border: none;
+    box-shadow: none;
+    padding: 20px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Enable momentum scrolling on iOS */
+    overscroll-behavior: contain;
+    /* Prevent scroll chaining on mobile */
+    border-radius: 0;
+    /* Remove border radius for full screen */
+  }
+  
+  .progress-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Level info and progress bar */
+  .level-info {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .progress-bar-container {
+    height: 32px; /* Slightly smaller */
+    border: 3px solid #DDDDDD;
+    margin-bottom: 10px;
+  }
+  
+  /* Level markers inside the progress bar */
+  .level-markers {
+    display: flex;
+    padding: 0 2px; /* Reduce padding */
+  }
+  
+  .level-marker {
+    width: 2px; /* Slightly thinner */
+    height: 32px; /* Match container height */
+  }
+  
+  /* Adjust progress markers */
+  .progress-markers {
+    margin-bottom: 20px;
+    margin-top: 2px;
+  }
+  
+  .marker {
+    font-size: 10px;
+    padding-top: 12px;
+    line-height: 1.2;
+    hyphens: auto; /* Allow hyphenation for long marker text */
+    word-break: break-word;
+  }
+  
+  .marker::before {
+    height: 8px;
+    width: 2px;
+  }
+  
+  .marker.current::before {
+    height: 12px;
+    width: 3px;
+  }
+  
+  /* Status message */
+  .status-message {
+    font-size: 12px;
+    margin: 15px 0 20px;
+  }
+  
+  /* Skill stats container */
+  .skill-stats-container {
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .skill-stats-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  /* Convert the stats grid to column layout on mobile */
+  .stats-grid {
+    flex-direction: column;
+    gap: 10px; /* Add gap between columns when stacked */
+  }
+  
+  .stats-column {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .stats-column:last-child {
+    margin-bottom: 0; /* Remove margin from last column */
+  }
+  
+  .stat-category-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+  }
+  
+  /* Make skill bars more compact */
+  .skill-bar-container {
+    margin-bottom: 10px;
+  }
+  
+  .skill-name {
+    font-size: 10px;
+  }
+  
+  .skill-value {
+    font-size: 10px;
+  }
+  
+  /* Special skills grid */
+  .special-skills-container {
+    padding-top: 12px;
+    margin-bottom: 18px;
+    border-top: 1px solid #444444; /* Thinner border */
+  }
+  
+  .special-skills-title {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  
+  .special-skills-grid {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 10px; /* Add row gap for better spacing */
+  }
+  
+  .special-skill {
+    width: 47%; /* Slightly wider */
+    margin: 0; /* Remove default margins */
+  }
+  
+  .special-skill-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+  }
+  
+  /* Achievements more compact */
+  .achievements-container {
+    padding-top: 12px;
+    border-top: 1px solid #444444;
+  }
+  
+  .achievement {
+    margin-bottom: 8px;
+    align-items: flex-start; /* Align to top for better text wrapping */
+  }
+  
+  .achievement-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  
+  .achievement-text {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  
+  /* Continue button */
+  .continue-btn-container {
+    margin-top: 20px;
+    margin-bottom: 40px; /* Add bottom margin for smaller screens to ensure button is visible */
+  }
+  
+  .continue-btn-box {
+    padding: 12px 8px; /* More vertical padding for better touch target */
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); /* Reduced shadow */
+  }
+  
+  .continue-btn-box.active {
+    background-color: #CCCCCC;
+    border-color: #DDDDDD;
+    opacity: 1;
+    animation: buttonFlash 2s infinite;
+  }
+  
+  .command-btn {
+    font-size: 14px;
+    width: 100%; /* Make the button fill the container */
+    padding: 5px 0; /* Add padding */
+    text-align: center; /* Center the text */
+  }
+  
+  .command-btn.active {
+    color: #000000;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    pointer-events: all;
+  }
+  
+  /* Close button position */
+  .progress-close-button {
+    top: 10px;
+    right: 10px;
+    z-index: 50;
+  }
+  
+  /* Remove decorative corners on mobile */
+  .progress-container .pixel-decorator {
+    display: none;
+  }
+}
+
+/* Even smaller screens adjustments */
+@media screen and (max-width: 480px) {
+  .progress-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  /* Ensure SE1 and SE2 text wraps on small screens */
+  .marker {
+    font-size: 8px;
+    text-align: center;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  /* Hide "SOFTWARE ENGINEER" text on extremely small screens */
+  @media screen and (max-width: 320px) {
+    #se1-marker, #se2-marker {
+      font-size: 0;
+    }
+    #se1-marker:after {
+      content: "SE I";
+      font-size: 8px;
+    }
+    #se2-marker:after {
+      content: "SE II";
+      font-size: 8px;
+    }
+  }
+  
+  .level-label, .level-value {
+    font-size: 11px;
+  }
+  
+  /* Status message */
+  .status-message {
+    margin-bottom: 15px; 
+  }
+  
+  /* Custom sparkles and decorations */
+  .sparkle {
+    width: 4px;
+    height: 4px;
+  }
+  
+  /* Special skills adjustments */
+  .special-skill {
+    width: 48%;  /* Slightly wider to fit better */
+  }
+  
+  .special-skill-name {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  
+  .special-skill-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* More compact skill bars */
+  .skill-bar-container {
+    height: auto;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+  
+  .skill-name {
+    width: 40%;
+    padding-right: 5px;
+    font-size: 9px;
+  }
+  
+  .skill-bar-outer {
+    width: 50%;
+    height: 10px;
+    border: 1px solid #444444;
+  }
+  
+  .skill-value {
+    width: 10%;
+    font-size: 9px;
+  }
+  
+  /* Make achievement icons smaller */
+  .achievement-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Make close button smaller but more visible */
+  .progress-close-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Continue button */
+  .continue-btn-box {
+    padding: 10px 6px;
+  }
+  
+  .command-btn {
+    font-size: 12px;
+  }
+}
+
+/* Additional adjustments for even smaller screens */
+@media screen and (max-width: 480px) {
+  .project-name {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .project-stats {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .action-button {
+    padding: 6px 12px;
+  }
+  
+  .action-text {
+    font-size: 10px;
+  }
+  
+  /* Fix for navigation help bar */
+  .projects-navigation-help {
+    padding: 6px 4px;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+  }
+  
+  .nav-help-item {
+    margin: 0 4px;
+    font-size: 8px;
+    scale: 0.9;
+  }
+  
+  .nav-key {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .nav-action {
+    font-size: 8px;
+  }
+}
+
+/* Mobile Responsive Styles for Diary Section */
+
+/* Tablet adjustments */
+@media screen and (max-width: 1200px) {
+  .diary-inner-frame {
+    top: calc(5% + 25px);
+    left: calc(5% + 25px);
+    right: calc(5% + 25px);
+    bottom: calc(5% + 25px);
+  }
+  
+  .diary-container {
+    top: calc(5% + 50px);
+    left: calc(5% + 50px);
+    right: calc(5% + 50px);
+    bottom: calc(5% + 50px + 42px);
+  }
+  
+  .diary-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  /* Make diary section take full screen on mobile */
+  #diary-section {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  /* Adjust window frames */
+  .diary-window-frame {
+    width: 100%;
+    height: 100%;
+    border: 6px solid #DDDDDD;
+    top: 0;
+    left: 0;
+    position: fixed;
+  }
+  
+  .diary-inner-frame {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    border: 3px solid #DDDDDD;
+  }
+  
+  /* Adjust container dimensions */
+  .diary-container {
+    position: fixed;
+    top: 50px;
+    left: 35px;
+    right: 35px;
+    bottom: 70px; /* More space for navigation */
+    padding-right: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+  }
+  
+  /* Title and content adjustments */
+  .diary-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Status update container */
+  .tech-projects-container {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .tech-projects-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .tech-projects-content {
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.8px;
+  }
+  
+  .tech-projects-section {
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  
+  /* Diary entries */
+  .diary-entry {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 3px solid #DDDDDD;
+  }
+  
+  .diary-date {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .diary-content {
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.6px;
+  }
+  
+  /* Navigation help bar */
+  .diary-navigation-help {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .diary-nav-help-item {
+    margin: 0 10px;
+  }
+  
+  .diary-nav-key {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+  
+  .diary-nav-action {
+    font-size: 9px;
+  }
+  
+  /* Close button */
+  .diary-close-button {
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Hide decorative elements on mobile */
+  .pixel-border.diary-top,
+  .pixel-border.diary-bottom {
+    display: none;
+  }
+}
+
+/* Even smaller screens adjustments */
+@media screen and (max-width: 480px) {
+  /* Further reduce padding and margin */
+  .diary-inner-frame {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid #DDDDDD;
+  }
+  
+  .diary-container {
+    top: 40px;
+    left: 25px;
+    right: 25px;
+    bottom: 65px;
+  }
+  
+  .diary-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Status update container */
+  .tech-projects-container {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 3px solid #AAAAAA;
+  }
+  
+  .tech-projects-container::before {
+    font-size: 10px;
+    top: -10px;
+    padding: 1px 8px;
+    border: 1px solid #AAAAAA;
+  }
+  
+  /* Diary entries */
+  .diary-entry {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #DDDDDD;
+  }
+  
+  .diary-date {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  
+  .diary-content {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  
+  /* Hide or reduce size of decorative corners */
+  .diary-entry::before,
+  .diary-entry::after {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .diary-entry::before {
+    top: -5px;
+    left: -5px;
+  }
+  
+  .diary-entry::after {
+    bottom: -5px;
+    right: -5px;
+  }
+  
+  /* Navigation help with smaller text */
+  .diary-nav-key {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .diary-nav-action {
+    font-size: 8px;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 375px) {
+  .diary-container {
+    left: 20px;
+    right: 20px;
+  }
+  
+  .diary-title {
+    font-size: 16px;
+  }
+  
+  .diary-content,
+  .diary-date {
+    font-size: 10px;
+  }
+  
+  /* Reduce unnecessary decorative elements */
+  .tech-projects-section::before {
+    font-size: 8px;
+  }
+}
 
     /* Custom scrollbar for project description */
     .project-description::-webkit-scrollbar {
@@ -2954,7 +3644,7 @@
     <!-- JRPG-style popup container -->
     <div class="characters-popup">
       <!-- Title at the top -->
-      <div class="popup-title">CHARACTER INFORMATION</div>
+      <div class="popup-title">CHARACTER BIO</div>
 
       <!-- Close button -->
       <div class="close-button" id="close-characters-btn"></div>
