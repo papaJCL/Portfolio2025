@@ -89,6 +89,227 @@
       }
     }
 
+    /* Gothic Black & White Title Style with Drip Effect */
+    .gothic-bw-title {
+      font-family: 'Press Start 2P', monospace;
+      color: #FFFFFF;
+      position: relative;
+      text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.7),
+        2px 2px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
+      letter-spacing: 4px;
+      transform: scale(1, 1.2);
+      display: inline-block;
+      filter: contrast(1.2);
+      animation: whitePulse 4s infinite;
+      text-align: center;
+    }
+
+    /* Container for each line of the title */
+    .gothic-bw-title .title-line {
+      display: inline-block;
+    }
+
+    /* Subtle white drip effect under each letter */
+    .gothic-bw-title span span {
+      position: relative;
+      display: inline-block;
+    }
+
+    .gothic-bw-title span span::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-image: linear-gradient(to right,
+          rgba(120, 120, 120, 0.1),
+          rgba(255, 255, 255, 0.9),
+          rgba(120, 120, 120, 0.1));
+    }
+
+    /* Add longer drips to selected letters */
+    .gothic-bw-title span span.drip::before {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 40%;
+      width: 2px;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 1px 1px;
+    }
+
+    /* Stronger gradient for better visibility */
+    .gothic-drip-title span span::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      /* Thicker line */
+      background-image: linear-gradient(to right,
+          rgba(255, 255, 255, 0.3),
+          /* More visible starting point */
+          rgba(255, 255, 255, 1.0),
+          /* Fully opaque white in center */
+          rgba(255, 255, 255, 0.3)
+          /* More visible ending point */
+        );
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+      /* Glow effect */
+    }
+
+    /* Enhanced longer drips for selected letters */
+    .gothic-drip-title span span.drip::before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      /* Longer drip */
+      left: 40%;
+      width: 3px;
+      /* Slightly wider */
+      height: 12px;
+      /* Taller drip */
+      background-color: rgba(255, 255, 255, 1.0);
+      /* Fully opaque */
+      border-radius: 0 0 2px 2px;
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+      /* Glow effect */
+    }
+
+
+    /* White glow pulse animation */
+    @keyframes whitePulse {
+
+      0%,
+      100% {
+        text-shadow:
+          0 0 6px rgba(255, 255, 255, 0.5),
+          2px 2px 0 #000000,
+          -1px -1px 0 #000000,
+          1px -1px 0 #000000,
+          -1px 1px 0 #000000;
+      }
+
+      50% {
+        text-shadow:
+          0 0 10px rgba(255, 255, 255, 0.8),
+          2px 2px 0 #000000,
+          -1px -1px 0 #000000,
+          1px -1px 0 #000000,
+          -1px 1px 0 #000000;
+      }
+    }
+
+
+    /* Mobile CSS Improvements for Gothic Title and Subtitle */
+
+    /* Adjust the media queries for the gothic title text */
+    @media screen and (max-width: 768px) {
+      .gothic-bw-title {
+        letter-spacing: 2px;
+        transform: scale(1, 1.15);
+        width: 100%;
+        font-size: 1.4em;
+        /* Increased from base size */
+      }
+
+      .gothic-bw-title .title-line {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 0.75rem;
+        /* Slightly reduced subtitle size */
+        margin-bottom: 35px;
+        margin-top: 20px;
+      }
+
+      /* Menu options slightly bigger */
+      .menu-option {
+        font-size: 1.1rem;
+        margin: 14px 0;
+      }
+    }
+
+    /* Even smaller screens - further size adjustments */
+    @media screen and (max-width: 480px) {
+      .gothic-bw-title {
+        letter-spacing: 1px;
+        font-size: 1.2em;
+        /* Increased from 0.9em */
+        line-height: 1.4;
+        /* Add line height for better readability */
+      }
+
+      .gothic-bw-title .title-line {
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 0.65rem;
+        margin-bottom: 25px;
+        margin-top: 15px;
+      }
+
+      .menu-option {
+        font-size: 1rem;
+        margin: 12px 0;
+      }
+    }
+
+    /* Very small screens */
+    @media screen and (max-width: 375px) {
+      .gothic-bw-title {
+        font-size: 1.1em;
+        /* Still keep it reasonably sized for very small screens */
+        letter-spacing: 0.5px;
+      }
+
+      .title-line {
+        line-height: 1.3;
+      }
+
+      .subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+        margin-bottom: 20px;
+        margin-top: 12px;
+      }
+
+      .menu-option {
+        font-size: 0.9rem;
+        margin: 10px 0;
+        padding: 5px 10px;
+      }
+    }
+
+    /* Additional tweaks for the menu container on mobile */
+    @media screen and (max-width: 768px) {
+      .menu-title-container {
+        padding: 25px 20px;
+        width: 90%;
+      }
+    }
+
+    /* For very small screens, ensure everything fits */
+    @media screen and (max-width: 320px) {
+      .gothic-bw-title {
+        font-size: 1em;
+      }
+
+      .menu-title-container {
+        padding: 20px 15px;
+      }
+    }
+
     /*** LANDING PAGE STYLES ***/
     #landing {
       display: flex;
@@ -2162,1124 +2383,1162 @@
     }
 
     /* Mobile layout for projects - stack columns vertically */
-@media screen and (max-width: 768px) {
-  .projects-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 5px; /* Reduced from 10px to minimize space between columns */
-    padding: 10px 10px; /* Reduced padding */
-    height: auto;
-    min-height: 60vh;
-    touch-action: pan-y;
-    /* Explicitly enable vertical touch scrolling */
-  }
+    @media screen and (max-width: 768px) {
+      .projects-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 5px;
+        /* Reduced from 10px to minimize space between columns */
+        padding: 10px 10px;
+        /* Reduced padding */
+        height: auto;
+        min-height: 60vh;
+        touch-action: pan-y;
+        /* Explicitly enable vertical touch scrolling */
+      }
 
-  /* Adjust popup title size for mobile */
-  .popup-title {
-    font-size: 16px !important;
-    margin: 10px 0 !important;
-    letter-spacing: 1px !important;
-  }
+      /* Adjust popup title size for mobile */
+      .popup-title {
+        font-size: 16px !important;
+        margin: 10px 0 !important;
+        letter-spacing: 1px !important;
+      }
 
-  .projects-list-column,
-  .project-details-column {
-    height: auto;
-    width: 100%;
-    margin-right: 0;
-    min-height: auto;
-    max-height: none;
-    flex: 0 0 auto;
-    /* Don't grow, don't shrink, size to content */
-  }
+      .projects-list-column,
+      .project-details-column {
+        height: auto;
+        width: 100%;
+        margin-right: 0;
+        min-height: auto;
+        max-height: none;
+        flex: 0 0 auto;
+        /* Don't grow, don't shrink, size to content */
+      }
 
-  .projects-list-column {
-    height: auto;
-    min-height: auto;
-    max-height: 35vh;
-    flex: 0 0 auto;
-    overflow-y: auto;
-    /* Don't grow, don't shrink, size to content */
-  }
+      .projects-list-column {
+        height: auto;
+        min-height: auto;
+        max-height: 35vh;
+        flex: 0 0 auto;
+        overflow-y: auto;
+        /* Don't grow, don't shrink, size to content */
+      }
 
-  .project-details-column {
-    flex: 1 1 auto;
-    /* Grow, shrink, and base on content */
-    margin-top: 5px;
-    /* Reduced space between columns */
-    height: auto;
-    max-height: none;
-    min-height: 0;
-    /* Let it size based on available space */
-    -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling on iOS */
-    overscroll-behavior: contain;
-    /* Prevent scroll chaining */
-    overflow-y: auto !important;
-    /* Force scrolling */
-    height: auto;
-    max-height: 65vh;
-  }
+      .project-details-column {
+        flex: 1 1 auto;
+        /* Grow, shrink, and base on content */
+        margin-top: 5px;
+        /* Reduced space between columns */
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        /* Let it size based on available space */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+        overscroll-behavior: contain;
+        /* Prevent scroll chaining */
+        overflow-y: auto !important;
+        /* Force scrolling */
+        height: auto;
+        max-height: 65vh;
+      }
 
-  /* Make project details fill the available space */
-  .project-details.active {
-    display: flex !important;
-    /* Force display flex */
-    flex-direction: column;
-    height: auto !important;
-    flex: 1;
-    min-height: 100%;
-    overflow: visible !important
-  }
+      /* Make project details fill the available space */
+      .project-details.active {
+        display: flex !important;
+        /* Force display flex */
+        flex-direction: column;
+        height: auto !important;
+        flex: 1;
+        min-height: 100%;
+        overflow: visible !important
+      }
 
-  .projects-list {
-    flex: 0 0 auto;
-    max-height: none;
-    overflow-y: visible;
-  }
+      .projects-list {
+        flex: 0 0 auto;
+        max-height: none;
+        overflow-y: visible;
+      }
 
-  /* Adjust popup height to accommodate stacked layout */
-  .projects-popup {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Taller on mobile */
-  }
+      /* Adjust popup height to accommodate stacked layout */
+      .projects-popup {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Taller on mobile */
+      }
 
-  /* Make the project details container fill all available space */
-  .project-details-card {
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    overflow-y: scroll !important;
-    /* Force scrolling capability */
-    -webkit-overflow-scrolling: touch;
-    /* Enable momentum scrolling on iOS */
-    height: 100% !important;
-    position: relative;
-    touch-action: pan-y;
-    /* Explicitly enable vertical scrolling for touch */
-  }
+      /* Make the project details container fill all available space */
+      .project-details-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+        overflow-y: scroll !important;
+        /* Force scrolling capability */
+        -webkit-overflow-scrolling: touch;
+        /* Enable momentum scrolling on iOS */
+        height: 100% !important;
+        position: relative;
+        touch-action: pan-y;
+        /* Explicitly enable vertical scrolling for touch */
+      }
 
-  /* Project description takes remaining space */
-  .project-description {
-    -webkit-overflow-scrolling: touch;
-    overflow-y: visible !important;
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    padding-bottom: 60px;
-    /* Add extra padding at bottom for easier scrolling */
-    height: auto !important;
-    /* Auto height to fit content */
-    min-height: auto !important;
-    /* Allow it to be as small as needed */
-    max-height: none !important;
-    /* No maximum height */
-    overflow: visible !important;
-    /* Don't scroll within this element */
-    display: block !important;
-    /* Change from flex to block */
-    width: 100%;
-    /* Full width */
-  }
+      /* Project description takes remaining space */
+      .project-description {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: visible !important;
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        padding-bottom: 60px;
+        /* Add extra padding at bottom for easier scrolling */
+        height: auto !important;
+        /* Auto height to fit content */
+        min-height: auto !important;
+        /* Allow it to be as small as needed */
+        max-height: none !important;
+        /* No maximum height */
+        overflow: visible !important;
+        /* Don't scroll within this element */
+        display: block !important;
+        /* Change from flex to block */
+        width: 100%;
+        /* Full width */
+      }
 
-  .projects-list-title {
-    padding-bottom: 5px;
-    margin-bottom: 8px;
-    font-size: 14px;
-  }
+      .projects-list-title {
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
 
-  /* Make the project items a bit more compact */
-  .project-item {
-    padding: 8px;
-    margin-bottom: 5px;
-  }
+      /* Make the project items a bit more compact */
+      .project-item {
+        padding: 8px;
+        margin-bottom: 5px;
+      }
 
-  /* Last project item has no bottom margin */
-  .project-item:last-child {
-    margin-bottom: 0;
-  }
+      /* Last project item has no bottom margin */
+      .project-item:last-child {
+        margin-bottom: 0;
+      }
 
-  .projects-popup .pixel-decorator {
-    display: none;
-    /* Hide decorative corners on mobile fullscreen */
-  }
+      .projects-popup .pixel-decorator {
+        display: none;
+        /* Hide decorative corners on mobile fullscreen */
+      }
 
-  .projects-popup {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+      .projects-popup {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
 
-  /* Project actions positioning */
-  .project-actions {
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  /* Fix navigation help bar for all mobile sizes */
-  .projects-navigation-help {
-    padding: 6px 4px;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 100%;
-    overflow: hidden;
-  }
+      /* Project actions positioning */
+      .project-actions {
+        margin-bottom: 20px;
+        position: relative;
+      }
 
-  .project-stat {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #333333;
-  }
-  
-  .project-stat:last-child {
-    margin-bottom: 0;
-    border-bottom: none;
-  }
-  
-  .stat-label {
-    margin-bottom: 4px;
-    font-size: 10px;
-    color: #888888;
-  }
-  
-  .stat-value {
-    width: 100%;
-    font-size: 11px;
-    line-height: 1.5;
-    word-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-  }
-  
-  /* Hide the third navigation help item on very small screens to prevent overflow */
-  @media screen and (max-width: 360px) {
-    .nav-help-item:nth-child(3) {
-      display: none;
+      /* Fix navigation help bar for all mobile sizes */
+      .projects-navigation-help {
+        padding: 6px 4px;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .project-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #333333;
+      }
+
+      .project-stat:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+
+      .stat-label {
+        margin-bottom: 4px;
+        font-size: 10px;
+        color: #888888;
+      }
+
+      .stat-value {
+        width: 100%;
+        font-size: 11px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+      }
+
+      /* Hide the third navigation help item on very small screens to prevent overflow */
+      @media screen and (max-width: 360px) {
+        .nav-help-item:nth-child(3) {
+          display: none;
+        }
+      }
     }
-  }
-}
 
-/* Mobile Responsive Styles for Progress Container */
+    /* Mobile Responsive Styles for Progress Container */
 
-/* Fix for loading animations */
-@media screen and (max-width: 768px) {
-  /* Adjust loading dots animation to be more compact */
-  .loading-dots::after {
-    width: 20px;
-  }
-  
-  /* Ensure skill bar animations work on mobile */
-  .skill-bar-inner {
-    animation-duration: 1.2s; /* Slightly faster animation */
-  }
-  
-  /* Fix for sparkle animations - make them visible but not too distracting */
-  .sparkle {
-    animation-duration: 1.5s;
-  }
-}
+    /* Fix for loading animations */
+    @media screen and (max-width: 768px) {
 
-/* Tablet adjustments */
-@media screen and (max-width: 1200px) {
-  .progress-container {
-    width: 90%;
-    max-width: none;
-    padding: 30px;
-  }
-  
-  .progress-title {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-}
+      /* Adjust loading dots animation to be more compact */
+      .loading-dots::after {
+        width: 20px;
+      }
 
-/* Mobile layout */
-@media screen and (max-width: 768px) {
-  /* Progress container adjustments */
-  .progress-container {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    border: none;
-    box-shadow: none;
-    padding: 20px 15px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    /* Enable momentum scrolling on iOS */
-    overscroll-behavior: contain;
-    /* Prevent scroll chaining on mobile */
-    border-radius: 0;
-    /* Remove border radius for full screen */
-  }
-  
-  .progress-title {
-    font-size: 18px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-  }
-  
-  /* Level info and progress bar */
-  .level-info {
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .progress-bar-container {
-    height: 32px; /* Slightly smaller */
-    border: 3px solid #DDDDDD;
-    margin-bottom: 10px;
-  }
-  
-  /* Level markers inside the progress bar */
-  .level-markers {
-    display: flex;
-    padding: 0 2px; /* Reduce padding */
-  }
-  
-  .level-marker {
-    width: 2px; /* Slightly thinner */
-    height: 32px; /* Match container height */
-  }
-  
-  /* Adjust progress markers */
-  .progress-markers {
-    margin-bottom: 20px;
-    margin-top: 2px;
-  }
-  
-  .marker {
-    font-size: 10px;
-    padding-top: 12px;
-    line-height: 1.2;
-    hyphens: auto; /* Allow hyphenation for long marker text */
-    word-break: break-word;
-  }
-  
-  .marker::before {
-    height: 8px;
-    width: 2px;
-  }
-  
-  .marker.current::before {
-    height: 12px;
-    width: 3px;
-  }
-  
-  /* Status message */
-  .status-message {
-    font-size: 12px;
-    margin: 15px 0 20px;
-  }
-  
-  /* Skill stats container */
-  .skill-stats-container {
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
-  .skill-stats-title {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-  
-  /* Convert the stats grid to column layout on mobile */
-  .stats-grid {
-    flex-direction: column;
-    gap: 10px; /* Add gap between columns when stacked */
-  }
-  
-  .stats-column {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .stats-column:last-child {
-    margin-bottom: 0; /* Remove margin from last column */
-  }
-  
-  .stat-category-title {
-    font-size: 12px;
-    margin-bottom: 10px;
-    padding-bottom: 3px;
-  }
-  
-  /* Make skill bars more compact */
-  .skill-bar-container {
-    margin-bottom: 10px;
-  }
-  
-  .skill-name {
-    font-size: 10px;
-  }
-  
-  .skill-value {
-    font-size: 10px;
-  }
-  
-  /* Special skills grid */
-  .special-skills-container {
-    padding-top: 12px;
-    margin-bottom: 18px;
-    border-top: 1px solid #444444; /* Thinner border */
-  }
-  
-  .special-skills-title {
-    font-size: 13px;
-    margin-bottom: 12px;
-  }
-  
-  .special-skills-grid {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 10px; /* Add row gap for better spacing */
-  }
-  
-  .special-skill {
-    width: 47%; /* Slightly wider */
-    margin: 0; /* Remove default margins */
-  }
-  
-  .special-skill-icon {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 6px;
-  }
-  
-  /* Achievements more compact */
-  .achievements-container {
-    padding-top: 12px;
-    border-top: 1px solid #444444;
-  }
-  
-  .achievement {
-    margin-bottom: 8px;
-    align-items: flex-start; /* Align to top for better text wrapping */
-  }
-  
-  .achievement-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    flex-shrink: 0; /* Prevent icon from shrinking */
-  }
-  
-  .achievement-text {
-    font-size: 10px;
-    line-height: 1.4;
-  }
-  
-  /* Continue button */
-  .continue-btn-container {
-    margin-top: 20px;
-    margin-bottom: 40px; /* Add bottom margin for smaller screens to ensure button is visible */
-  }
-  
-  .continue-btn-box {
-    padding: 12px 8px; /* More vertical padding for better touch target */
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); /* Reduced shadow */
-  }
-  
-  .continue-btn-box.active {
-    background-color: #CCCCCC;
-    border-color: #DDDDDD;
-    opacity: 1;
-    animation: buttonFlash 2s infinite;
-  }
-  
-  .command-btn {
-    font-size: 14px;
-    width: 100%; /* Make the button fill the container */
-    padding: 5px 0; /* Add padding */
-    text-align: center; /* Center the text */
-  }
-  
-  .command-btn.active {
-    color: #000000;
-    cursor: pointer;
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
-    pointer-events: all;
-  }
-  
-  /* Close button position */
-  .progress-close-button {
-    top: 10px;
-    right: 10px;
-    z-index: 50;
-  }
-  
-  /* Remove decorative corners on mobile */
-  .progress-container .pixel-decorator {
-    display: none;
-  }
-}
+      /* Ensure skill bar animations work on mobile */
+      .skill-bar-inner {
+        animation-duration: 1.2s;
+        /* Slightly faster animation */
+      }
 
-/* Even smaller screens adjustments */
-@media screen and (max-width: 480px) {
-  .progress-title {
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  /* Ensure SE1 and SE2 text wraps on small screens */
-  .marker {
-    font-size: 8px;
-    text-align: center;
-    hyphens: auto;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-  
-  /* Hide "SOFTWARE ENGINEER" text on extremely small screens */
-  @media screen and (max-width: 320px) {
-    #se1-marker, #se2-marker {
-      font-size: 0;
+      /* Fix for sparkle animations - make them visible but not too distracting */
+      .sparkle {
+        animation-duration: 1.5s;
+      }
     }
-    #se1-marker:after {
-      content: "SE I";
-      font-size: 8px;
+
+    /* Tablet adjustments */
+    @media screen and (max-width: 1200px) {
+      .progress-container {
+        width: 90%;
+        max-width: none;
+        padding: 30px;
+      }
+
+      .progress-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
     }
-    #se2-marker:after {
-      content: "SE II";
-      font-size: 8px;
+
+    /* Mobile layout */
+    @media screen and (max-width: 768px) {
+
+      /* Progress container adjustments */
+      .progress-container {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        padding: 20px 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Enable momentum scrolling on iOS */
+        overscroll-behavior: contain;
+        /* Prevent scroll chaining on mobile */
+        border-radius: 0;
+        /* Remove border radius for full screen */
+      }
+
+      .progress-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+
+      /* Level info and progress bar */
+      .level-info {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .progress-bar-container {
+        height: 32px;
+        /* Slightly smaller */
+        border: 3px solid #DDDDDD;
+        margin-bottom: 10px;
+      }
+
+      /* Level markers inside the progress bar */
+      .level-markers {
+        display: flex;
+        padding: 0 2px;
+        /* Reduce padding */
+      }
+
+      .level-marker {
+        width: 2px;
+        /* Slightly thinner */
+        height: 32px;
+        /* Match container height */
+      }
+
+      /* Adjust progress markers */
+      .progress-markers {
+        margin-bottom: 20px;
+        margin-top: 2px;
+      }
+
+      .marker {
+        font-size: 10px;
+        padding-top: 12px;
+        line-height: 1.2;
+        hyphens: auto;
+        /* Allow hyphenation for long marker text */
+        word-break: break-word;
+      }
+
+      .marker::before {
+        height: 8px;
+        width: 2px;
+      }
+
+      .marker.current::before {
+        height: 12px;
+        width: 3px;
+      }
+
+      /* Status message */
+      .status-message {
+        font-size: 12px;
+        margin: 15px 0 20px;
+      }
+
+      /* Skill stats container */
+      .skill-stats-container {
+        padding: 15px;
+        margin-top: 20px;
+      }
+
+      .skill-stats-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      /* Convert the stats grid to column layout on mobile */
+      .stats-grid {
+        flex-direction: column;
+        gap: 10px;
+        /* Add gap between columns when stacked */
+      }
+
+      .stats-column {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .stats-column:last-child {
+        margin-bottom: 0;
+        /* Remove margin from last column */
+      }
+
+      .stat-category-title {
+        font-size: 12px;
+        margin-bottom: 10px;
+        padding-bottom: 3px;
+      }
+
+      /* Make skill bars more compact */
+      .skill-bar-container {
+        margin-bottom: 10px;
+      }
+
+      .skill-name {
+        font-size: 10px;
+      }
+
+      .skill-value {
+        font-size: 10px;
+      }
+
+      /* Special skills grid */
+      .special-skills-container {
+        padding-top: 12px;
+        margin-bottom: 18px;
+        border-top: 1px solid #444444;
+        /* Thinner border */
+      }
+
+      .special-skills-title {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      .special-skills-grid {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 10px;
+        /* Add row gap for better spacing */
+      }
+
+      .special-skill {
+        width: 47%;
+        /* Slightly wider */
+        margin: 0;
+        /* Remove default margins */
+      }
+
+      .special-skill-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 6px;
+      }
+
+      /* Achievements more compact */
+      .achievements-container {
+        padding-top: 12px;
+        border-top: 1px solid #444444;
+      }
+
+      .achievement {
+        margin-bottom: 8px;
+        align-items: flex-start;
+        /* Align to top for better text wrapping */
+      }
+
+      .achievement-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        flex-shrink: 0;
+        /* Prevent icon from shrinking */
+      }
+
+      .achievement-text {
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      /* Continue button */
+      .continue-btn-container {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        /* Add bottom margin for smaller screens to ensure button is visible */
+      }
+
+      .continue-btn-box {
+        padding: 12px 8px;
+        /* More vertical padding for better touch target */
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+        /* Reduced shadow */
+      }
+
+      .continue-btn-box.active {
+        background-color: #CCCCCC;
+        border-color: #DDDDDD;
+        opacity: 1;
+        animation: buttonFlash 2s infinite;
+      }
+
+      .command-btn {
+        font-size: 14px;
+        width: 100%;
+        /* Make the button fill the container */
+        padding: 5px 0;
+        /* Add padding */
+        text-align: center;
+        /* Center the text */
+      }
+
+      .command-btn.active {
+        color: #000000;
+        cursor: pointer;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+        pointer-events: all;
+      }
+
+      /* Close button position */
+      .progress-close-button {
+        top: 10px;
+        right: 10px;
+        z-index: 50;
+      }
+
+      /* Remove decorative corners on mobile */
+      .progress-container .pixel-decorator {
+        display: none;
+      }
     }
-  }
-  
-  .level-label, .level-value {
-    font-size: 11px;
-  }
-  
-  /* Status message */
-  .status-message {
-    margin-bottom: 15px; 
-  }
-  
-  /* Custom sparkles and decorations */
-  .sparkle {
-    width: 4px;
-    height: 4px;
-  }
-  
-  /* Special skills adjustments */
-  .special-skill {
-    width: 48%;  /* Slightly wider to fit better */
-  }
-  
-  .special-skill-name {
-    font-size: 8px;
-    letter-spacing: 0;
-  }
-  
-  .special-skill-icon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  /* More compact skill bars */
-  .skill-bar-container {
-    height: auto;
-    margin-bottom: 6px;
-    align-items: center;
-  }
-  
-  .skill-name {
-    width: 40%;
-    padding-right: 5px;
-    font-size: 9px;
-  }
-  
-  .skill-bar-outer {
-    width: 50%;
-    height: 10px;
-    border: 1px solid #444444;
-  }
-  
-  .skill-value {
-    width: 10%;
-    font-size: 9px;
-  }
-  
-  /* Make achievement icons smaller */
-  .achievement-icon {
-    width: 18px;
-    height: 18px;
-  }
-  
-  /* Make close button smaller but more visible */
-  .progress-close-button {
-    width: 28px;
-    height: 28px;
-  }
-  
-  /* Continue button */
-  .continue-btn-box {
-    padding: 10px 6px;
-  }
-  
-  .command-btn {
-    font-size: 12px;
-  }
-}
 
-/* Additional adjustments for even smaller screens */
-@media screen and (max-width: 480px) {
-  .project-name {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
+    /* Even smaller screens adjustments */
+    @media screen and (max-width: 480px) {
+      .progress-title {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
 
-  .project-stats {
-    padding: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .action-button {
-    padding: 6px 12px;
-  }
-  
-  .action-text {
-    font-size: 10px;
-  }
-  
-  /* Fix for navigation help bar */
-  .projects-navigation-help {
-    padding: 6px 4px;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow items to wrap if needed */
-  }
-  
-  .nav-help-item {
-    margin: 0 4px;
-    font-size: 8px;
-    scale: 0.9;
-  }
-  
-  .nav-key {
-    font-size: 8px;
-    padding: 2px 4px;
-  }
-  
-  .nav-action {
-    font-size: 8px;
-  }
-}
+      /* Ensure SE1 and SE2 text wraps on small screens */
+      .marker {
+        font-size: 8px;
+        text-align: center;
+        hyphens: auto;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
 
-/* Mobile Responsive Styles for Diary Section */
+      /* Hide "SOFTWARE ENGINEER" text on extremely small screens */
+      @media screen and (max-width: 320px) {
 
-/* Tablet adjustments */
-@media screen and (max-width: 1200px) {
-  .diary-inner-frame {
-    top: calc(5% + 25px);
-    left: calc(5% + 25px);
-    right: calc(5% + 25px);
-    bottom: calc(5% + 25px);
-  }
-  
-  .diary-container {
-    top: calc(5% + 50px);
-    left: calc(5% + 50px);
-    right: calc(5% + 50px);
-    bottom: calc(5% + 50px + 42px);
-  }
-  
-  .diary-title {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
-}
+        #se1-marker,
+        #se2-marker {
+          font-size: 0;
+        }
 
-/* Mobile layout */
-@media screen and (max-width: 768px) {
-  /* Make diary section take full screen on mobile */
-  #diary-section {
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-  
-  /* Adjust window frames */
-  .diary-window-frame {
-    width: 100%;
-    height: 100%;
-    border: 6px solid #DDDDDD;
-    top: 0;
-    left: 0;
-    position: fixed;
-  }
-  
-  .diary-inner-frame {
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    right: 24px;
-    bottom: 24px;
-    border: 3px solid #DDDDDD;
-  }
-  
-  /* Adjust container dimensions */
-  .diary-container {
-    position: fixed;
-    top: 50px;
-    left: 35px;
-    right: 35px;
-    bottom: 70px; /* More space for navigation */
-    padding-right: 10px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    overscroll-behavior: contain; /* Prevent scroll chaining */
-  }
-  
-  /* Title and content adjustments */
-  .diary-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-  }
-  
-  /* Status update container */
-  .tech-projects-container {
-    padding: 15px;
-    margin-bottom: 25px;
-  }
-  
-  .tech-projects-title {
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-  
-  .tech-projects-content {
-    font-size: 12px;
-    line-height: 1.3;
-    letter-spacing: 0.8px;
-  }
-  
-  .tech-projects-section {
-    margin-bottom: 12px;
-    padding-left: 12px;
-  }
-  
-  /* Diary entries */
-  .diary-entry {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 3px solid #DDDDDD;
-  }
-  
-  .diary-date {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-  
-  .diary-content {
-    font-size: 12px;
-    line-height: 1.6;
-    letter-spacing: 0.6px;
-  }
-  
-  /* Navigation help bar */
-  .diary-navigation-help {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 8px;
-  }
-  
-  .diary-nav-help-item {
-    margin: 0 10px;
-  }
-  
-  .diary-nav-key {
-    font-size: 9px;
-    padding: 3px 6px;
-  }
-  
-  .diary-nav-action {
-    font-size: 9px;
-  }
-  
-  /* Close button */
-  .diary-close-button {
-    top: 10px;
-    right: 10px;
-    width: 28px;
-    height: 28px;
-  }
-  
-  /* Hide decorative elements on mobile */
-  .pixel-border.diary-top,
-  .pixel-border.diary-bottom {
-    display: none;
-  }
-}
+        #se1-marker:after {
+          content: "SE I";
+          font-size: 8px;
+        }
 
-/* Even smaller screens adjustments */
-@media screen and (max-width: 480px) {
-  /* Further reduce padding and margin */
-  .diary-inner-frame {
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    border: 2px solid #DDDDDD;
-  }
-  
-  .diary-container {
-    top: 40px;
-    left: 25px;
-    right: 25px;
-    bottom: 65px;
-  }
-  
-  .diary-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  /* Status update container */
-  .tech-projects-container {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 3px solid #AAAAAA;
-  }
-  
-  .tech-projects-container::before {
-    font-size: 10px;
-    top: -10px;
-    padding: 1px 8px;
-    border: 1px solid #AAAAAA;
-  }
-  
-  /* Diary entries */
-  .diary-entry {
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 2px solid #DDDDDD;
-  }
-  
-  .diary-date {
-    font-size: 11px;
-    margin-bottom: 8px;
-  }
-  
-  .diary-content {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  
-  /* Hide or reduce size of decorative corners */
-  .diary-entry::before,
-  .diary-entry::after {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .diary-entry::before {
-    top: -5px;
-    left: -5px;
-  }
-  
-  .diary-entry::after {
-    bottom: -5px;
-    right: -5px;
-  }
-  
-  /* Navigation help with smaller text */
-  .diary-nav-key {
-    font-size: 8px;
-    padding: 2px 4px;
-  }
-  
-  .diary-nav-action {
-    font-size: 8px;
-  }
-}
+        #se2-marker:after {
+          content: "SE II";
+          font-size: 8px;
+        }
+      }
 
-/* Very small screens */
-@media screen and (max-width: 375px) {
-  .diary-container {
-    left: 20px;
-    right: 20px;
-  }
-  
-  .diary-title {
-    font-size: 16px;
-  }
-  
-  .diary-content,
-  .diary-date {
-    font-size: 10px;
-  }
-  
-  /* Reduce unnecessary decorative elements */
-  .tech-projects-section::before {
-    font-size: 8px;
-  }
-}
+      .level-label,
+      .level-value {
+        font-size: 11px;
+      }
 
-/* Mobile Responsive Styles for Landing Page */
+      /* Status message */
+      .status-message {
+        margin-bottom: 15px;
+      }
 
-/* Tablet adjustments */
-@media screen and (max-width: 1200px) {
-  .window-frame {
-    width: 95%;
-    height: 95%;
-  }
-  
-  .inner-frame {
-    top: 25px;
-    left: 25px;
-    right: 25px;
-    bottom: 25px;
-  }
-  
-  .menu-title-container {
-    width: 80%;
-    max-width: 600px;
-    padding: 30px 35px;
-  }
-  
-  .title {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-  }
-  
-  .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 50px;
-    margin-top: 25px;
-  }
-  
-  .menu-option {
-    font-size: 1.1rem;
-    padding: 8px 30px;
-  }
-}
+      /* Custom sparkles and decorations */
+      .sparkle {
+        width: 4px;
+        height: 4px;
+      }
 
-/* Mobile layout */
-@media screen and (max-width: 768px) {
-  /* Hide background image for mobile */
-  .inner-frame {
-    background-image: url('background-mobile.png');
-    background-color: #111111;
-  }
-  
-  /* Adjust window frame for better mobile proportions */
-  .window-frame {
-    width: 100%;
-    height: 100%;
-    border-width: 6px;
-  }
-  
-  .inner-frame {
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    border-width: 3px;
-  }
-  
-  /* Center menu container */
-  .menu-title-container {
-    width: 90%;
-    padding: 25px 20px;
-    top: 48%;
-  }
-  
-  /* Adjust text sizes */
-  .title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    line-height: 1.2;
-  }
-  
-  .subtitle {
-    font-size: 0.8rem;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    letter-spacing: 0.5px;
-  }
-  
-  /* More compact menu options */
-  .menu-option {
-    font-size: 1rem;
-    margin: 15px 0;
-    padding: 6px 20px;
-  }
-  
-  /* Music player positioning for mobile */
-  .music-player {
-    bottom: 25px;
-    left: 25px;
-  }
-  
-  /* Adjust decorative elements */
-  .pixel-border {
-    width: 70%;
-  }
-  
-  /* Simplified cloud animation */
-  .clouds {
-    opacity: 0.3;
-  }
-  
-  /* Ensure menu options have appropriate hover areas for touch */
-  .menu-option::before {
-    left: 2px;
-  }
-  
-  .menu-option:hover::before {
-    left: 5px;
-  }
-  
-  /* Add tap highlight effect for mobile */
-  .menu-option:active {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Copyright position adjustment */
-  .copyright {
-    bottom: 5px;
-    right: 5px;
-    font-size: 0.4rem;
-  }
-}
+      /* Special skills adjustments */
+      .special-skill {
+        width: 48%;
+        /* Slightly wider to fit better */
+      }
 
-/* Even smaller screens adjustments */
-@media screen and (max-width: 480px) {
-  /* Further reduce sizes */
-  .inner-frame {
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    border-width: 2px;
-  }
-  
-  .window-frame {
-    border-width: 4px;
-  }
-  
-  .menu-title-container {
-    padding: 20px 15px;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    text-shadow: 3px 3px 0px #000000;
-  }
-  
-  .subtitle {
-    font-size: 0.7rem;
-    margin-bottom: 30px;
-    margin-top: 15px;
-  }
-  
-  .menu-option {
-    font-size: 0.9rem;
-    margin: 12px 0;
-    padding: 5px 15px;
-  }
-  
-  /* Remove decorative elements that take up space */
-  .pixel-border {
-    display: none;
-  }
-  
-  /* Simplified clouds */
-  .clouds {
-    opacity: 0.2;
-  }
-  
-  /* Music player scaling */
-  .music-controls {
-    transform: scale(0.9);
-    transform-origin: bottom left;
-  }
-}
+      .special-skill-name {
+        font-size: 8px;
+        letter-spacing: 0;
+      }
 
-/* Very small screens */
-@media screen and (max-width: 375px) {
-  .title {
-    font-size: 1.2rem;
-    text-shadow: 2px 2px 0px #000000;
-  }
-  
-  .subtitle {
-    font-size: 0.6rem;
-    letter-spacing: 0;
-  }
-  
-  .menu-option {
-    font-size: 0.8rem;
-    margin: 10px 0;
-  }
-  
-  /* Ensure the menu container doesn't overflow */
-  .menu-title-container {
-    max-height: 80%;
-    overflow-y: auto;
-    padding: 15px 12px;
-  }
-  
-  /* Scale down music player */
-  .music-controls {
-    transform: scale(0.8);
-  }
-}
+      .special-skill-icon {
+        width: 32px;
+        height: 32px;
+      }
 
-/* Ensure touch targets are large enough */
-@media (hover: none) and (pointer: coarse) {
-  .menu-option {
-    padding: 12px 20px;
-    margin: 15px 0;
-  }
-  
-  .music-btn {
-    min-width: 44px;
-    min-height: 44px;
-  }
-}
+      /* More compact skill bars */
+      .skill-bar-container {
+        height: auto;
+        margin-bottom: 6px;
+        align-items: center;
+      }
 
-/* Orientation-specific adjustments */
-@media screen and (max-height: 600px) and (orientation: landscape) {
-  .menu-title-container {
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    padding: 15px;
-  }
-  
-  .title {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-  }
-  
-  .subtitle {
-    margin: 10px 0 25px 0;
-  }
-  
-  .menu-option {
-    margin: 8px 0;
-  }
-}
+      .skill-name {
+        width: 40%;
+        padding-right: 5px;
+        font-size: 9px;
+      }
+
+      .skill-bar-outer {
+        width: 50%;
+        height: 10px;
+        border: 1px solid #444444;
+      }
+
+      .skill-value {
+        width: 10%;
+        font-size: 9px;
+      }
+
+      /* Make achievement icons smaller */
+      .achievement-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Make close button smaller but more visible */
+      .progress-close-button {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* Continue button */
+      .continue-btn-box {
+        padding: 10px 6px;
+      }
+
+      .command-btn {
+        font-size: 12px;
+      }
+    }
+
+    /* Additional adjustments for even smaller screens */
+    @media screen and (max-width: 480px) {
+      .project-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      .project-stats {
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+
+      .action-button {
+        padding: 6px 12px;
+      }
+
+      .action-text {
+        font-size: 10px;
+      }
+
+      /* Fix for navigation help bar */
+      .projects-navigation-help {
+        padding: 6px 4px;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* Allow items to wrap if needed */
+      }
+
+      .nav-help-item {
+        margin: 0 4px;
+        font-size: 8px;
+        scale: 0.9;
+      }
+
+      .nav-key {
+        font-size: 8px;
+        padding: 2px 4px;
+      }
+
+      .nav-action {
+        font-size: 8px;
+      }
+    }
+
+    /* Mobile Responsive Styles for Diary Section */
+
+    /* Tablet adjustments */
+    @media screen and (max-width: 1200px) {
+      .diary-inner-frame {
+        top: calc(5% + 25px);
+        left: calc(5% + 25px);
+        right: calc(5% + 25px);
+        bottom: calc(5% + 25px);
+      }
+
+      .diary-container {
+        top: calc(5% + 50px);
+        left: calc(5% + 50px);
+        right: calc(5% + 50px);
+        bottom: calc(5% + 50px + 42px);
+      }
+
+      .diary-title {
+        font-size: 24px;
+        margin-bottom: 25px;
+      }
+    }
+
+    /* Mobile layout */
+    @media screen and (max-width: 768px) {
+
+      /* Make diary section take full screen on mobile */
+      #diary-section {
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      /* Adjust window frames */
+      .diary-window-frame {
+        width: 100%;
+        height: 100%;
+        border: 6px solid #DDDDDD;
+        top: 0;
+        left: 0;
+        position: fixed;
+      }
+
+      .diary-inner-frame {
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+        border: 3px solid #DDDDDD;
+      }
+
+      /* Adjust container dimensions */
+      .diary-container {
+        position: fixed;
+        top: 50px;
+        left: 35px;
+        right: 35px;
+        bottom: 70px;
+        /* More space for navigation */
+        padding-right: 10px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+        overscroll-behavior: contain;
+        /* Prevent scroll chaining */
+      }
+
+      /* Title and content adjustments */
+      .diary-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+
+      /* Status update container */
+      .tech-projects-container {
+        padding: 15px;
+        margin-bottom: 25px;
+      }
+
+      .tech-projects-title {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .tech-projects-content {
+        font-size: 12px;
+        line-height: 1.3;
+        letter-spacing: 0.8px;
+      }
+
+      .tech-projects-section {
+        margin-bottom: 12px;
+        padding-left: 12px;
+      }
+
+      /* Diary entries */
+      .diary-entry {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 3px solid #DDDDDD;
+      }
+
+      .diary-date {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .diary-content {
+        font-size: 12px;
+        line-height: 1.6;
+        letter-spacing: 0.6px;
+      }
+
+      /* Navigation help bar */
+      .diary-navigation-help {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+      }
+
+      .diary-nav-help-item {
+        margin: 0 10px;
+      }
+
+      .diary-nav-key {
+        font-size: 9px;
+        padding: 3px 6px;
+      }
+
+      .diary-nav-action {
+        font-size: 9px;
+      }
+
+      /* Close button */
+      .diary-close-button {
+        top: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+      }
+
+      /* Hide decorative elements on mobile */
+      .pixel-border.diary-top,
+      .pixel-border.diary-bottom {
+        display: none;
+      }
+    }
+
+    /* Even smaller screens adjustments */
+    @media screen and (max-width: 480px) {
+
+      /* Further reduce padding and margin */
+      .diary-inner-frame {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border: 2px solid #DDDDDD;
+      }
+
+      .diary-container {
+        top: 40px;
+        left: 25px;
+        right: 25px;
+        bottom: 65px;
+      }
+
+      .diary-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      /* Status update container */
+      .tech-projects-container {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 3px solid #AAAAAA;
+      }
+
+      .tech-projects-container::before {
+        font-size: 10px;
+        top: -10px;
+        padding: 1px 8px;
+        border: 1px solid #AAAAAA;
+      }
+
+      /* Diary entries */
+      .diary-entry {
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 2px solid #DDDDDD;
+      }
+
+      .diary-date {
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .diary-content {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      /* Hide or reduce size of decorative corners */
+      .diary-entry::before,
+      .diary-entry::after {
+        width: 10px;
+        height: 10px;
+      }
+
+      .diary-entry::before {
+        top: -5px;
+        left: -5px;
+      }
+
+      .diary-entry::after {
+        bottom: -5px;
+        right: -5px;
+      }
+
+      /* Navigation help with smaller text */
+      .diary-nav-key {
+        font-size: 8px;
+        padding: 2px 4px;
+      }
+
+      .diary-nav-action {
+        font-size: 8px;
+      }
+    }
+
+    /* Very small screens */
+    @media screen and (max-width: 375px) {
+      .diary-container {
+        left: 20px;
+        right: 20px;
+      }
+
+      .diary-title {
+        font-size: 16px;
+      }
+
+      .diary-content,
+      .diary-date {
+        font-size: 10px;
+      }
+
+      /* Reduce unnecessary decorative elements */
+      .tech-projects-section::before {
+        font-size: 8px;
+      }
+    }
+
+    /* Mobile Responsive Styles for Landing Page */
+
+    /* Tablet adjustments */
+    @media screen and (max-width: 1200px) {
+      .window-frame {
+        width: 95%;
+        height: 95%;
+      }
+
+      .inner-frame {
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+      }
+
+      .menu-title-container {
+        width: 80%;
+        max-width: 600px;
+        padding: 30px 35px;
+      }
+
+      .title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 50px;
+        margin-top: 25px;
+      }
+
+      .menu-option {
+        font-size: 1.1rem;
+        padding: 8px 30px;
+      }
+    }
+
+    /* Mobile layout */
+    @media screen and (max-width: 768px) {
+
+      /* Hide background image for mobile */
+      .inner-frame {
+        background-image: url('background-mobile.png');
+        background-color: #111111;
+      }
+
+      /* Adjust window frame for better mobile proportions */
+      .window-frame {
+        width: 100%;
+        height: 100%;
+        border-width: 6px;
+      }
+
+      .inner-frame {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border-width: 3px;
+      }
+
+      /* Center menu container */
+      .menu-title-container {
+        width: 90%;
+        padding: 25px 20px;
+        top: 48%;
+      }
+
+      /* Adjust text sizes */
+      .title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+      }
+
+      /* More compact menu options */
+      .menu-option {
+        font-size: 1rem;
+        margin: 15px 0;
+        padding: 6px 20px;
+      }
+
+      /* Music player positioning for mobile */
+      .music-player {
+        bottom: 25px;
+        left: 25px;
+      }
+
+      /* Adjust decorative elements */
+      .pixel-border {
+        width: 70%;
+      }
+
+      /* Simplified cloud animation */
+      .clouds {
+        opacity: 0.3;
+      }
+
+      /* Ensure menu options have appropriate hover areas for touch */
+      .menu-option::before {
+        left: 2px;
+      }
+
+      .menu-option:hover::before {
+        left: 5px;
+      }
+
+      /* Add tap highlight effect for mobile */
+      .menu-option:active {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Copyright position adjustment */
+      .copyright {
+        bottom: 5px;
+        right: 5px;
+        font-size: 0.4rem;
+      }
+    }
+
+    /* Even smaller screens adjustments */
+    @media screen and (max-width: 480px) {
+
+      /* Further reduce sizes */
+      .inner-frame {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-width: 2px;
+      }
+
+      .window-frame {
+        border-width: 4px;
+      }
+
+      .menu-title-container {
+        padding: 20px 15px;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        text-shadow: 3px 3px 0px #000000;
+      }
+
+      .subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 30px;
+        margin-top: 15px;
+      }
+
+      .menu-option {
+        font-size: 0.9rem;
+        margin: 12px 0;
+        padding: 5px 15px;
+      }
+
+      /* Remove decorative elements that take up space */
+      .pixel-border {
+        display: none;
+      }
+
+      /* Simplified clouds */
+      .clouds {
+        opacity: 0.2;
+      }
+
+      /* Music player scaling */
+      .music-controls {
+        transform: scale(0.9);
+        transform-origin: bottom left;
+      }
+    }
+
+    /* Very small screens */
+    @media screen and (max-width: 375px) {
+      .title {
+        font-size: 1.2rem;
+        text-shadow: 2px 2px 0px #000000;
+      }
+
+      .subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+      }
+
+      .menu-option {
+        font-size: 0.8rem;
+        margin: 10px 0;
+      }
+
+      /* Ensure the menu container doesn't overflow */
+      .menu-title-container {
+        max-height: 80%;
+        overflow-y: auto;
+        padding: 15px 12px;
+      }
+
+      /* Scale down music player */
+      .music-controls {
+        transform: scale(0.8);
+      }
+    }
+
+    /* Ensure touch targets are large enough */
+    @media (hover: none) and (pointer: coarse) {
+      .menu-option {
+        padding: 12px 20px;
+        margin: 15px 0;
+      }
+
+      .music-btn {
+        min-width: 44px;
+        min-height: 44px;
+      }
+    }
+
+    /* Orientation-specific adjustments */
+    @media screen and (max-height: 600px) and (orientation: landscape) {
+      .menu-title-container {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        padding: 15px;
+      }
+
+      .title {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+      }
+
+      .subtitle {
+        margin: 10px 0 25px 0;
+      }
+
+      .menu-option {
+        margin: 8px 0;
+      }
+    }
 
     /* Custom scrollbar for project description */
     .project-description::-webkit-scrollbar {
@@ -3591,7 +3850,17 @@
 
     <!-- Combined Title and Menu Container with solid background -->
     <div class="menu-title-container">
-      <h1 class="title">WELCOME<br>FELLOW TRAVELER!</h1>
+      <h1 class="gothic-bw-title">
+        <span class="title-line">
+          <span class="drip">W</span><span>E</span><span>L</span><span
+            class="drip">C</span><span>O</span><span>M</span><span>E</span>
+        </span>
+        <span class="title-line">
+          <span>F</span><span>E</span><span class="drip">L</span><span>L</span><span>O</span><span class="drip">W</span>
+          <span>T</span><span>R</span><span>A</span><span>V</span><span>E</span><span
+            class="drip">L</span><span>E</span><span>R</span><span>!</span>
+        </span>
+      </h1>
       <div class="subtitle">PRESS LOAD TO CONTINUE<span class="loading-dots"></span></div>
 
       <!-- Menu options as direct children of menu-title-container -->
@@ -5009,57 +5278,57 @@
     });
 
     // Add this script to prevent music functionality on mobile devices
-document.addEventListener('DOMContentLoaded', function() {
-  // Simple mobile detection
-  function isMobileDevice() {
-    return (window.innerWidth <= 768) || 
-           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
-  
-  if (isMobileDevice()) {
-    // Disable music functionality
-    const musicPlayer = document.querySelector('.music-player');
-    if (musicPlayer) {
-      // Hide the player completely with inline style as backup to CSS
-      musicPlayer.style.display = 'none';
-      
-      // Disable the audio element
-      const audioElement = document.getElementById('background-music');
-      if (audioElement) {
-        // Remove the source to prevent any loading
-        audioElement.innerHTML = '';
-        audioElement.load(); // Force reload without source
-        
-        // Disable autoplay and loop attributes
-        audioElement.removeAttribute('loop');
-        audioElement.autoplay = false;
-        
-        // Override play method to prevent playing
-        audioElement.play = function() {
-          return new Promise((resolve) => {
-            resolve();
-          });
-        };
+    document.addEventListener('DOMContentLoaded', function () {
+      // Simple mobile detection
+      function isMobileDevice() {
+        return (window.innerWidth <= 768) ||
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       }
-      
-      // Nullify the toggleMusic function
-      window.toggleMusic = function() {
-        return false;
-      };
-      
-      // Disable music initialization on interaction
-      window.musicInitiated = true; // Prevent initial music playing
-      window.initMusicOnInteraction = function() {
-        return false;
-      };
-      
-      // Remove any existing event listeners that might trigger music
-      // (This is a simplified approach - event listeners added directly to elements will still exist)
-      document.removeEventListener('click', initMusicOnInteraction);
-      document.removeEventListener('keydown', initMusicOnInteraction);
-    }
-  }
-});
+
+      if (isMobileDevice()) {
+        // Disable music functionality
+        const musicPlayer = document.querySelector('.music-player');
+        if (musicPlayer) {
+          // Hide the player completely with inline style as backup to CSS
+          musicPlayer.style.display = 'none';
+
+          // Disable the audio element
+          const audioElement = document.getElementById('background-music');
+          if (audioElement) {
+            // Remove the source to prevent any loading
+            audioElement.innerHTML = '';
+            audioElement.load(); // Force reload without source
+
+            // Disable autoplay and loop attributes
+            audioElement.removeAttribute('loop');
+            audioElement.autoplay = false;
+
+            // Override play method to prevent playing
+            audioElement.play = function () {
+              return new Promise((resolve) => {
+                resolve();
+              });
+            };
+          }
+
+          // Nullify the toggleMusic function
+          window.toggleMusic = function () {
+            return false;
+          };
+
+          // Disable music initialization on interaction
+          window.musicInitiated = true; // Prevent initial music playing
+          window.initMusicOnInteraction = function () {
+            return false;
+          };
+
+          // Remove any existing event listeners that might trigger music
+          // (This is a simplified approach - event listeners added directly to elements will still exist)
+          document.removeEventListener('click', initMusicOnInteraction);
+          document.removeEventListener('keydown', initMusicOnInteraction);
+        }
+      }
+    });
   </script>
 </body>
 
