@@ -4138,53 +4138,10 @@
       </div>
 
       <!-- Diary entries with newest first -->
-      <div class="diary-entry">
-        <div class="diary-date">ENTRY 5</div>
-        <div class="diary-content">
-          Today was the deployment day! Learned about netlify and how simple it is for basic HTML. This was also the day
-          I did some finalizing touches on the portfolio with the about and progress section. Still need some more baby
-          tweaks such as more gothic font for titles, fixing lower right copyright when on different resolutions, and
-          perhaps some different borders.
-        </div>
+      <div id="diary-entries-container">
+
       </div>
 
-      <div class="diary-entry">
-        <div class="diary-date">ENTRY 4</div>
-        <div class="diary-content">
-          After seeing an insane Neon Genesis Evangelion UI example from Claude 3.7 I realized I wanted to test it out.
-          That was the start of this portfolio site. It's not mobile friendly but it was to test what the AI could do.
-          We got pretty crazy in the UI department.
-        </div>
-      </div>
-
-      <div class="diary-entry">
-        <div class="diary-date">ENTRY 3</div>
-        <div class="diary-content">
-          I learned alot about python on my new VM. I spend almost a full week doing several different mini projects and
-          overall deeper knowledge. One of the craziest things is I was learning to process image algorithms from
-          scratch(not using libraries). That meant learning to manipulate 3D arrays and learning how images actually
-          work(RGB, Black/White)
-        </div>
-      </div>
-
-      <div class="diary-entry">
-        <div class="diary-date">ENTRY 2</div>
-        <div class="diary-content">
-          I've missed my linux installation but I don't see a need to dual boot currently. So instead I learned the
-          VMWare software and had my own Linux VM.
-        </div>
-      </div>
-
-      <div class="diary-entry">
-        <div class="diary-date">ENTRY 1</div>
-        <div class="diary-content">
-          To get me started back on my tech journey it all started with Counter Strike 2. We needed to have a server
-          hosted to play our custom game modes. I decided to take on the challenge. It easily could've been hosted by
-          premium servers but I wanted to customize itself and learn more about AWS and Docker in the process. I wrote
-          my own Docker-Compose file and became very familiar with AWS EC2. This was also me diping my toes into AI for
-          the first time and learning how to implement it for my future projects.
-        </div>
-      </div>
     </div>
   </div>
 
@@ -5310,6 +5267,106 @@
         }
       }
     });
+
+    // Function to load diary entries from JSON file
+// Function to load diary entries from embedded data
+function loadDiaryEntries() {
+  // Diary entries data embedded directly in the JavaScript
+  const diaryData = {
+    "entries": [
+      {
+        "id": 6,
+        "date": "ENTRY 6",
+        "content": "Today was the final fixing day! Spent all day fixing mobile layouts for about/progress/loading/diaries/landing page, as well as modifying the structure so all the diary entries are a .json so much easier to write to diary. Also used the new ChatGPT 4o image regen for the character models of myself and chopper. Looks really good!"
+      },
+      {
+        "id": 5,
+        "date": "ENTRY 5",
+        "content": "Today was the deployment day! Learned about netlify and how simple it is for basic HTML. This was also the day I did some finalizing touches on the portfolio with the about and progress section. Still need some more baby tweaks such as more gothic font for titles, fixing lower right copyright when on different resolutions, and perhaps some different borders."
+      },
+      {
+        "id": 4,
+        "date": "ENTRY 4",
+        "content": "After seeing an insane Neon Genesis Evangelion UI example from Claude 3.7 I realized I wanted to test it out. That was the start of this portfolio site. It's not mobile friendly but it was to test what the AI could do. We got pretty crazy in the UI department."
+      },
+      {
+        "id": 3,
+        "date": "ENTRY 3",
+        "content": "I learned alot about python on my new VM. I spend almost a full week doing several different mini projects and overall deeper knowledge. One of the craziest things is I was learning to process image algorithms from scratch(not using libraries). That meant learning to manipulate 3D arrays and learning how images actually work(RGB, Black/White)"
+      },
+      {
+        "id": 2,
+        "date": "ENTRY 2",
+        "content": "I've missed my linux installation but I don't see a need to dual boot currently. So instead I learned the VMWare software and had my own Linux VM."
+      },
+      {
+        "id": 1,
+        "date": "ENTRY 1",
+        "content": "To get me started back on my tech journey it all started with Counter Strike 2. We needed to have a server hosted to play our custom game modes. I decided to take on the challenge. It easily could've been hosted by premium servers but I wanted to customize itself and learn more about AWS and Docker in the process. I wrote my own Docker-Compose file and became very familiar with AWS EC2. This was also me diping my toes into AI for the first time and learning how to implement it for my future projects."
+      }
+    ]
+  };
+  
+  // Get the container where entries will be added
+  const entriesContainer = document.getElementById('diary-entries-container');
+  
+  // Sort entries by ID in descending order (newest first)
+  const sortedEntries = diaryData.entries.sort((a, b) => b.id - a.id);
+  
+  // Generate HTML for each entry
+  sortedEntries.forEach(entry => {
+    const entryElement = document.createElement('div');
+    entryElement.className = 'diary-entry';
+    
+    // Create date element
+    const dateElement = document.createElement('div');
+    dateElement.className = 'diary-date';
+    dateElement.textContent = entry.date;
+    
+    // Create content element
+    const contentElement = document.createElement('div');
+    contentElement.className = 'diary-content';
+    contentElement.textContent = entry.content;
+    
+    // Add elements to the entry
+    entryElement.appendChild(dateElement);
+    entryElement.appendChild(contentElement);
+    
+    // Add entry to the container
+    entriesContainer.appendChild(entryElement);
+  });
+}
+
+// Load entries when the diary section is shown
+document.addEventListener('DOMContentLoaded', function() {
+  // Reference to the diary section
+  const diarySection = document.getElementById('diary-section');
+  
+  // Initialize entries when diary section is first displayed
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === 'class' && 
+          diarySection.classList.contains('show') && 
+          !diarySection.hasAttribute('data-entries-loaded')) {
+        
+        // Load the entries
+        loadDiaryEntries();
+        
+        // Mark as loaded to avoid reloading
+        diarySection.setAttribute('data-entries-loaded', 'true');
+      }
+    });
+  });
+  
+  // Start observing the diary section for class changes
+  observer.observe(diarySection, { attributes: true });
+  
+  // Also load if the diary section is already visible when the page loads
+  if (diarySection.classList.contains('show')) {
+    loadDiaryEntries();
+    diarySection.setAttribute('data-entries-loaded', 'true');
+  }
+});
 
     // Add this script to prevent music functionality on mobile devices
     document.addEventListener('DOMContentLoaded', function () {
