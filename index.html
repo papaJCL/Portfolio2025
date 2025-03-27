@@ -2782,6 +2782,259 @@
   }
 }
 
+/* Mobile Responsive Styles for Diary Section */
+
+/* Tablet adjustments */
+@media screen and (max-width: 1200px) {
+  .diary-inner-frame {
+    top: calc(5% + 25px);
+    left: calc(5% + 25px);
+    right: calc(5% + 25px);
+    bottom: calc(5% + 25px);
+  }
+  
+  .diary-container {
+    top: calc(5% + 50px);
+    left: calc(5% + 50px);
+    right: calc(5% + 50px);
+    bottom: calc(5% + 50px + 42px);
+  }
+  
+  .diary-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  /* Make diary section take full screen on mobile */
+  #diary-section {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  /* Adjust window frames */
+  .diary-window-frame {
+    width: 100%;
+    height: 100%;
+    border: 6px solid #DDDDDD;
+    top: 0;
+    left: 0;
+    position: fixed;
+  }
+  
+  .diary-inner-frame {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    border: 3px solid #DDDDDD;
+  }
+  
+  /* Adjust container dimensions */
+  .diary-container {
+    position: fixed;
+    top: 50px;
+    left: 35px;
+    right: 35px;
+    bottom: 70px; /* More space for navigation */
+    padding-right: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+  }
+  
+  /* Title and content adjustments */
+  .diary-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Status update container */
+  .tech-projects-container {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .tech-projects-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .tech-projects-content {
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.8px;
+  }
+  
+  .tech-projects-section {
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  
+  /* Diary entries */
+  .diary-entry {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 3px solid #DDDDDD;
+  }
+  
+  .diary-date {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .diary-content {
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.6px;
+  }
+  
+  /* Navigation help bar */
+  .diary-navigation-help {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .diary-nav-help-item {
+    margin: 0 10px;
+  }
+  
+  .diary-nav-key {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+  
+  .diary-nav-action {
+    font-size: 9px;
+  }
+  
+  /* Close button */
+  .diary-close-button {
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Hide decorative elements on mobile */
+  .pixel-border.diary-top,
+  .pixel-border.diary-bottom {
+    display: none;
+  }
+}
+
+/* Even smaller screens adjustments */
+@media screen and (max-width: 480px) {
+  /* Further reduce padding and margin */
+  .diary-inner-frame {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid #DDDDDD;
+  }
+  
+  .diary-container {
+    top: 40px;
+    left: 25px;
+    right: 25px;
+    bottom: 65px;
+  }
+  
+  .diary-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Status update container */
+  .tech-projects-container {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 3px solid #AAAAAA;
+  }
+  
+  .tech-projects-container::before {
+    font-size: 10px;
+    top: -10px;
+    padding: 1px 8px;
+    border: 1px solid #AAAAAA;
+  }
+  
+  /* Diary entries */
+  .diary-entry {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #DDDDDD;
+  }
+  
+  .diary-date {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  
+  .diary-content {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  
+  /* Hide or reduce size of decorative corners */
+  .diary-entry::before,
+  .diary-entry::after {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .diary-entry::before {
+    top: -5px;
+    left: -5px;
+  }
+  
+  .diary-entry::after {
+    bottom: -5px;
+    right: -5px;
+  }
+  
+  /* Navigation help with smaller text */
+  .diary-nav-key {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .diary-nav-action {
+    font-size: 8px;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 375px) {
+  .diary-container {
+    left: 20px;
+    right: 20px;
+  }
+  
+  .diary-title {
+    font-size: 16px;
+  }
+  
+  .diary-content,
+  .diary-date {
+    font-size: 10px;
+  }
+  
+  /* Reduce unnecessary decorative elements */
+  .tech-projects-section::before {
+    font-size: 8px;
+  }
+}
+
     /* Custom scrollbar for project description */
     .project-description::-webkit-scrollbar {
       width: 6px;
