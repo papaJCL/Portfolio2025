@@ -208,107 +208,141 @@
     }
 
 
-    /* Mobile CSS Improvements for Gothic Title and Subtitle */
+/* Mobile CSS Improvements for Gothic Title and Subtitle */
 
-    /* Adjust the media queries for the gothic title text */
-    @media screen and (max-width: 768px) {
-      .gothic-bw-title {
-        letter-spacing: 2px;
-        transform: scale(1, 1.15);
-        width: 100%;
-        font-size: 1.4em;
-        /* Increased from base size */
-      }
+/* Adjust the media queries for the gothic title text */
+@media screen and (max-width: 768px) {
+  .gothic-bw-title {
+    letter-spacing: 2px;
+    transform: scale(1, 1.15);
+    width: 100%;
+    font-size: 1.4em; /* Increased from base size */
+  }
+  
+  .gothic-bw-title .title-line {
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  .subtitle {
+    font-size: 0.75rem; /* Slightly reduced subtitle size */
+    margin-bottom: 35px;
+    margin-top: 20px;
+  }
+  
+  /* Menu options slightly bigger */
+  .menu-option {
+    font-size: 1.1rem;
+    margin: 14px 0;
+  }
+}
 
-      .gothic-bw-title .title-line {
-        display: block;
-        margin-bottom: 12px;
-      }
+/* Even smaller screens - further size adjustments */
+@media screen and (max-width: 480px) {
+  .gothic-bw-title {
+    letter-spacing: 1px;
+    font-size: 1.2em; /* Increased from 0.9em */
+    line-height: 1.4; /* Add line height for better readability */
+  }
+  
+  .gothic-bw-title .title-line {
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 0.65rem;
+    margin-bottom: 25px;
+    margin-top: 15px;
+  }
+  
+  .menu-option {
+    font-size: 1rem;
+    margin: 12px 0;
+  }
+}
 
-      .subtitle {
-        font-size: 0.75rem;
-        /* Slightly reduced subtitle size */
-        margin-bottom: 35px;
-        margin-top: 20px;
-      }
-
-      /* Menu options slightly bigger */
-      .menu-option {
-        font-size: 1.1rem;
-        margin: 14px 0;
-      }
+/* Reduced glow effect for mobile devices */
+@media screen and (max-width: 768px) {
+  @keyframes whitePulse {
+    0%, 100% { 
+      text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.3),
+        1px 1px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
     }
-
-    /* Even smaller screens - further size adjustments */
-    @media screen and (max-width: 480px) {
-      .gothic-bw-title {
-        letter-spacing: 1px;
-        font-size: 1.2em;
-        /* Increased from 0.9em */
-        line-height: 1.4;
-        /* Add line height for better readability */
-      }
-
-      .gothic-bw-title .title-line {
-        margin-bottom: 10px;
-      }
-
-      .subtitle {
-        font-size: 0.65rem;
-        margin-bottom: 25px;
-        margin-top: 15px;
-      }
-
-      .menu-option {
-        font-size: 1rem;
-        margin: 12px 0;
-      }
+    50% { 
+      text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.5),
+        1px 1px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
     }
+  }
+  
+  .gothic-bw-title {
+    filter: contrast(1.1); /* Reduced from 1.2 */
+  }
+}
 
-    /* Very small screens */
-    @media screen and (max-width: 375px) {
-      .gothic-bw-title {
-        font-size: 1.1em;
-        /* Still keep it reasonably sized for very small screens */
-        letter-spacing: 0.5px;
-      }
+/* Screens under 400px - prevent word breaking */
+@media screen and (max-width: 400px) {
+  .gothic-bw-title {
+    font-size: 0.95em; /* Smaller font size to prevent line breaks */
+    letter-spacing: 1px; /* Remove letter spacing to save space */
+  }
+  
+  .gothic-bw-title .title-line:last-child {
+    white-space: nowrap; /* Prevent breaking within this line */
+    font-size: 0.9em; /* Make second line slightly smaller */
+    transform: scale(0.95, 1); /* Slight horizontal compression */
+  }
+}
 
-      .title-line {
-        line-height: 1.3;
-      }
+/* Very small screens */
+@media screen and (max-width: 375px) {
+  .gothic-bw-title {
+    font-size: 0.9em; /* Further reduced for very small screens */
+  }
+  
+  .title-line {
+    line-height: 1.3;
+  }
+  
+  .subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0;
+    margin-bottom: 20px;
+    margin-top: 12px;
+  }
+  
+  .menu-option {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    padding: 5px 10px;
+  }
+}
 
-      .subtitle {
-        font-size: 0.6rem;
-        letter-spacing: 0;
-        margin-bottom: 20px;
-        margin-top: 12px;
-      }
+/* Additional tweaks for the menu container on mobile */
+@media screen and (max-width: 768px) {
+  .menu-title-container {
+    padding: 25px 20px;
+    width: 90%;
+  }
+}
 
-      .menu-option {
-        font-size: 0.9rem;
-        margin: 10px 0;
-        padding: 5px 10px;
-      }
-    }
-
-    /* Additional tweaks for the menu container on mobile */
-    @media screen and (max-width: 768px) {
-      .menu-title-container {
-        padding: 25px 20px;
-        width: 90%;
-      }
-    }
-
-    /* For very small screens, ensure everything fits */
-    @media screen and (max-width: 320px) {
-      .gothic-bw-title {
-        font-size: 1em;
-      }
-
-      .menu-title-container {
-        padding: 20px 15px;
-      }
-    }
+/* For very small screens, ensure everything fits */
+@media screen and (max-width: 320px) {
+  .gothic-bw-title {
+    font-size: 1em;
+  }
+  
+  .menu-title-container {
+    padding: 20px 15px;
+  }
+}
 
     /*** LANDING PAGE STYLES ***/
     #landing {
