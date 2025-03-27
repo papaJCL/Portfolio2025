@@ -1,0 +1,243 @@
+/* --- Base Mobile Improvements (Shared & Specific) --- */
+
+@media screen and (max-width: 768px) {
+    .gothic-bw-title { letter-spacing: 2px; transform: scale(1, 1.15); width: 100%; font-size: 1.4em; filter: contrast(1.1); animation-name: whitePulse; }
+    .gothic-bw-title .title-line { display: block; margin-bottom: 12px; }
+    #landing .subtitle { font-size: 0.75rem; margin-bottom: 35px; margin-top: 20px; }
+    .menu-option { font-size: 1.1rem; margin: 14px 0; }
+    .menu-title-container { padding: 25px 20px; width: 90%; }
+    .loading-dots::after { width: 20px; }
+    .skill-bar-inner { animation-duration: 1.2s; }
+    .sparkle { animation-duration: 1.5s; }
+    .inner-frame { background-image: url('../background-mobile.png'); background-color: #111111; top: 20px; left: 20px; right: 20px; bottom: 20px; border-width: 3px; }
+    .window-frame { width: 100%; height: 100%; border-width: 6px; top: 0; left: 0; }
+    #landing .title { font-size: 1.8rem; margin-bottom: 10px; line-height: 1.2; }
+    .music-player { bottom: 25px; left: 25px; }
+    .pixel-border.top, .pixel-border.bottom { width: 70%; }
+    .clouds { opacity: 0.3; }
+    .menu-option::before { left: 2px; }
+    .menu-option:hover::before { left: 5px; }
+    .menu-option:active { background-color: rgba(255, 255, 255, 0.1); }
+    .copyright { bottom: 5px; right: 5px; font-size: 0.4rem; }
+
+    /* Popups */
+    .characters-popup, .projects-popup { width: 100%; height: 100%; max-width: none; border: none; box-shadow: none; border-radius: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; }
+    .characters-grid, .projects-grid { flex-direction: column; gap: 5px; padding: 10px; height: calc(100% - 60px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .characters-list-column, .projects-list-column { width: 100%; margin-right: 0; flex-shrink: 0; max-height: 35vh; min-height: 150px; overflow-y: auto; padding: 8px 15px; }
+    .character-details-column, .project-details-column { width: 100%; margin-top: 5px; flex: 1; min-height: 0; overflow: hidden; /* Changed from auto */ display: flex; flex-direction: column; padding: 8px 15px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .character-details.active, .project-details.active { height: auto; min-height: 100%; display: flex; flex-direction: column; flex: 1; min-height: 0; overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+    .characters-list, .projects-list { max-height: none; overflow-y: visible; }
+    .characters-list-title, .projects-list-title { padding-bottom: 5px; margin-bottom: 8px; font-size: 14px; }
+    .character-item, .project-item { padding: 8px; margin-bottom: 5px; }
+    .character-item:last-child, .project-item:last-child { margin-bottom: 0; }
+    .close-button { top: 10px; right: 10px; z-index: 50; }
+    .popup-title { margin: 10px 0; font-size: 16px; letter-spacing: 1px; }
+    .characters-popup .pixel-decorator, .projects-popup .pixel-decorator { display: none; }
+    .characters-navigation-help, .projects-navigation-help { padding: 8px 4px; flex-wrap: wrap; justify-content: center; position: sticky; bottom: 0; background-color: #000000; flex-shrink: 0; }
+    .nav-help-item { margin: 0 5px; }
+
+    /* Character Specific */
+    .character-details-card { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+    .character-description { flex-grow: 1; flex-shrink: 1; overflow: visible; min-height: auto; padding-bottom: 20px; margin-top: 15px; }
+    .character-image-container { flex-shrink: 0; }
+    .character-bio { word-wrap: break-word; overflow-wrap: break-word; }
+
+    /* Project Specific */
+    .project-description { flex-grow: 1; flex-shrink: 1; overflow: visible; min-height: auto; word-wrap: break-word; overflow-wrap: break-word; padding-bottom: 10px; margin-bottom: 0; }
+    .project-actions { margin-top: auto; flex-shrink: 0; position: static; padding-top: 15px; padding-bottom: 10px; background-color: #111111; width: 100%; box-sizing: border-box; display: flex; justify-content: space-around; }
+    .project-name, .project-stats { flex-shrink: 0; }
+    .project-stat { flex-direction: column; align-items: flex-start; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #333333; }
+    .project-stat:last-child { margin-bottom: 0; border-bottom: none; }
+    .stat-label { margin-bottom: 4px; font-size: 10px; color: #888888; }
+    .stat-value { width: 100%; font-size: 11px; line-height: 1.5; word-wrap: break-word; }
+
+    /* Progress */
+    .progress-container { width: 100%; height: 100%; max-width: none; border: none; box-shadow: none; padding: 20px 15px; position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; border-radius: 0; }
+    .progress-title { font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; }
+    .level-info { margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .progress-bar-container { height: 32px; border: 3px solid #DDDDDD; margin-bottom: 10px; }
+    .level-markers { display: flex; padding: 0 2px; top: 0; height: 100%; align-items: center; }
+    .level-marker { width: 2px; height: 100%; }
+    .progress-markers { margin-bottom: 20px; margin-top: 2px; }
+    .marker { font-size: 10px; padding-top: 12px; line-height: 1.2; hyphens: auto; word-break: break-word; }
+    .marker::before { height: 8px; width: 2px; }
+    .marker.current::before { height: 12px; width: 3px; }
+    .status-message { font-size: 12px; margin: 15px 0 20px; }
+    .skill-stats-container { padding: 15px; margin-top: 20px; }
+    .skill-stats-title { font-size: 16px; margin-bottom: 15px; }
+    .stats-grid { flex-direction: column; gap: 10px; }
+    .stats-column { width: 100%; margin-bottom: 15px; }
+    .stats-column:last-child { margin-bottom: 0; }
+    .stat-category-title { font-size: 12px; margin-bottom: 10px; padding-bottom: 3px; }
+    .skill-bar-container { margin-bottom: 10px; }
+    .skill-name, .skill-value { font-size: 10px; }
+    .special-skills-container { padding-top: 12px; margin-bottom: 18px; border-top: 1px solid #444444; }
+    .special-skills-title { font-size: 13px; margin-bottom: 12px; }
+    .special-skills-grid { flex-wrap: wrap; justify-content: space-between; row-gap: 10px; }
+    .special-skill { width: 47%; margin: 0; }
+    .special-skill-icon { width: 36px; height: 36px; margin-bottom: 6px; }
+    .achievements-container { padding-top: 12px; border-top: 1px solid #444444; }
+    .achievement { margin-bottom: 8px; align-items: flex-start; }
+    .achievement-icon { width: 20px; height: 20px; margin-right: 10px; flex-shrink: 0; }
+    .achievement-text { font-size: 10px; line-height: 1.4; }
+    .continue-btn-container { margin-top: 20px; margin-bottom: 40px; }
+    .continue-btn-box { padding: 12px 8px; box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); }
+    .command-btn { font-size: 14px; width: 100%; padding: 5px 0; text-align: center; }
+    .progress-close-button { top: 10px; right: 10px; z-index: 50; }
+    .progress-container .pixel-decorator { display: none; }
+
+    /* Diary */
+    #diary-section { width: 100%; height: 100vh; overflow: hidden; }
+    .diary-window-frame { width: 100%; height: 100%; border-width: 6px; top: 0; left: 0; position: fixed; }
+    .diary-inner-frame { position: fixed; top: 24px; left: 24px; right: 24px; bottom: 24px; border-width: 3px; }
+    .diary-container { position: fixed; top: 44px; left: 34px; right: 34px; bottom: 84px; width: auto; padding: 0 10px 0 5px; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; box-sizing: border-box; }
+    .diary-title { font-size: 20px; margin-bottom: 20px; letter-spacing: 1px; }
+    .tech-projects-container { padding: 15px; margin-bottom: 25px; width: 100%; }
+    .tech-projects-title { font-size: 12px; margin-bottom: 6px; }
+    .tech-projects-content, .diary-content { font-size: 12px; letter-spacing: 0.6px; overflow-wrap: break-word; word-wrap: break-word; }
+    .tech-projects-content { line-height: 1.3; letter-spacing: 0.8px; }
+    .diary-content { line-height: 1.6; }
+    .tech-projects-section { margin-bottom: 12px; padding-left: 12px; }
+    .diary-entry { padding: 20px; margin-bottom: 20px; border-width: 3px; width: 100%; }
+    .diary-date { font-size: 12px; margin-bottom: 10px; }
+    .diary-navigation-help { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px; z-index: 10; display: flex; justify-content: center; background-color: rgba(0, 0, 0, 0.8); border-top: 2px solid #555555; }
+    .diary-nav-help-item { margin: 0 10px; display: flex; align-items: center;}
+    .diary-nav-key { font-size: 9px; padding: 3px 6px; background-color: #333333; border: 2px solid #AAAAAA; color: #FFFFFF; margin-right: 6px;}
+    .diary-nav-action { font-size: 9px; color: #BBBBBB;}
+    .diary-close-button { top: 10px; right: 10px; width: 28px; height: 28px; z-index: 50; }
+    .pixel-border.diary-top, .pixel-border.diary-bottom { display: none; }
+}
+
+@media screen and (max-width: 480px) {
+    .gothic-bw-title { letter-spacing: 1px; font-size: 1.2em; line-height: 1.4; }
+    .gothic-bw-title .title-line { margin-bottom: 10px; }
+    #landing .subtitle { font-size: 0.65rem; margin-bottom: 25px; margin-top: 15px; }
+    .menu-option { font-size: 1rem; margin: 12px 0; }
+    .inner-frame { top: 15px; left: 15px; right: 15px; bottom: 15px; border-width: 2px; }
+    .window-frame { border-width: 4px; }
+    #landing .title { font-size: 1.5rem; text-shadow: 3px 3px 0px #000000; }
+    .pixel-border.top, .pixel-border.bottom { display: none; }
+    .clouds { opacity: 0.2; }
+    .music-controls { transform: scale(0.9); transform-origin: bottom left; }
+
+    /* Popups */
+    .character-image { height: 180px; width: 120px; }
+    .character-role { font-size: 16px; margin-bottom: 10px; }
+    .character-bio { font-size: 12px; line-height: 1.5; }
+    .nav-help-item { margin: 0 8px; } /* Applied to both nav helps */
+    .projects-list-column, .project-details-column { padding: 5px 10px; } /* Added */
+    .projects-list-title, .project-details-title { padding-bottom: 3px; margin-bottom: 5px; } /* Added */
+
+    /* Project Specific */
+    .project-name { font-size: 16px; margin-bottom: 15px; }
+    .project-stats { padding: 10px; margin-bottom: 15px; }
+    .action-button { padding: 6px 12px; }
+    .action-text { font-size: 10px; }
+    .projects-navigation-help .nav-help-item { margin: 0 4px; scale: 0.9; }
+    .projects-navigation-help .nav-key { font-size: 8px; padding: 2px 4px; }
+    .projects-navigation-help .nav-action { font-size: 8px; }
+
+    /* Progress */
+    .progress-title { font-size: 14px; margin-bottom: 15px; }
+    .marker { font-size: 8px; hyphens: auto; overflow-wrap: break-word; }
+    .level-label, .level-value { font-size: 11px; }
+    .status-message { margin-bottom: 15px; }
+    .sparkle { width: 4px; height: 4px; }
+    .special-skill { width: 48%; }
+    .special-skill-name { font-size: 8px; letter-spacing: 0; }
+    .special-skill-icon { width: 32px; height: 32px; }
+    .skill-bar-container { margin-bottom: 6px; align-items: center; }
+    .skill-name { width: 40%; padding-right: 5px; font-size: 9px; }
+    .skill-bar-outer { width: 50%; height: 10px; border: 1px solid #444444; }
+    .skill-value { width: 10%; font-size: 9px; }
+    .achievement-icon { width: 18px; height: 18px; }
+    .progress-close-button { width: 28px; height: 28px; }
+    .continue-btn-box { padding: 10px 6px; }
+    .command-btn { font-size: 12px; }
+
+    /* Diary */
+    .diary-inner-frame { top: 20px; left: 20px; right: 20px; bottom: 20px; border-width: 2px; }
+    .diary-container { top: 36px; left: 25px; right: 25px; bottom: 75px; }
+    .diary-title { font-size: 18px; margin-bottom: 15px; }
+    .tech-projects-container { padding: 12px; margin-bottom: 20px; border-width: 3px; width: 100%; }
+    .tech-projects-container::before { font-size: 10px; top: -10px; padding: 1px 8px; border-width: 1px; }
+    .tech-projects-content, .diary-content { font-size: 11px; overflow-wrap: break-word; word-wrap: break-word; }
+    .tech-projects-content { line-height: 1.4; }
+    .diary-content { line-height: 1.5; }
+    .diary-entry { padding: 15px; margin-bottom: 15px; border-width: 2px; width: 100%; }
+    .diary-date { font-size: 11px; margin-bottom: 8px; }
+    .diary-entry::before, .diary-entry::after { width: 10px; height: 10px; }
+    .diary-entry::before { top: -5px; left: -5px; }
+    .diary-entry::after { bottom: -5px; right: -5px; }
+    .diary-nav-key, .diary-nav-action { font-size: 8px; }
+    .diary-nav-key { padding: 2px 4px; }
+}
+
+@media screen and (max-width: 400px) {
+    .gothic-bw-title { font-size: 0.95em; letter-spacing: 1px; }
+    .gothic-bw-title .title-line:last-child { white-space: nowrap; font-size: 0.9em; transform: scale(0.95, 1); }
+}
+
+@media screen and (max-width: 375px) {
+    .gothic-bw-title { font-size: 0.9em; }
+    .gothic-bw-title .title-line { line-height: 1.3; }
+    #landing .subtitle { font-size: 0.6rem; letter-spacing: 0; margin-bottom: 20px; margin-top: 12px; }
+    .menu-option { font-size: 0.9rem; margin: 10px 0; padding: 5px 10px; }
+    #landing .title { font-size: 1.2rem; text-shadow: 2px 2px 0px #000000; }
+    .menu-title-container { max-height: 80%; overflow-y: auto; padding: 15px 12px; }
+    .music-controls { transform: scale(0.8); }
+    .diary-container { top: 32px; left: 22px; right: 22px; bottom: 70px; padding-right: 5px; }
+    .diary-title { font-size: 16px; }
+    .diary-content, .diary-date, .tech-projects-content { font-size: 10px; } /* Combined */
+    .tech-projects-section::before { font-size: 8px; }
+}
+
+@media screen and (max-width: 360px) {
+    .projects-navigation-help .nav-help-item:nth-child(3) { /* display: none; */ }
+}
+
+@media screen and (max-width: 320px) {
+    .gothic-bw-title { font-size: 1em; }
+    .menu-title-container { padding: 20px 15px; }
+    #se1-marker, #se2-marker { font-size: 0; }
+    #se1-marker:after { content: "SE I"; font-size: 8px; }
+    #se2-marker:after { content: "SE II"; font-size: 8px; }
+}
+
+/* --- Other Media Queries --- */
+
+@media screen and (max-width: 1200px) { /* Tablet adjustments */
+    .progress-container { width: 90%; max-width: none; padding: 30px; }
+    .progress-title { font-size: 24px; margin-bottom: 30px; }
+    .diary-inner-frame { top: calc(5% + 25px); left: calc(5% + 25px); right: calc(5% + 25px); bottom: calc(5% + 25px); }
+    .diary-container { top: calc(5% + 50px); left: calc(5% + 50px); right: calc(5% + 50px); bottom: calc(5% + 50px + 42px); }
+    .diary-title { font-size: 24px; margin-bottom: 25px; }
+    .window-frame { width: 95%; height: 95%; }
+    .inner-frame { top: 25px; left: 25px; right: 25px; bottom: 25px; }
+    .menu-title-container { width: 80%; max-width: 600px; padding: 30px 35px; }
+    #landing .title { font-size: 2.2rem; margin-bottom: 15px; }
+    #landing .subtitle { font-size: 0.9rem; margin-bottom: 50px; margin-top: 25px; }
+    #landing .menu-option { font-size: 1.1rem; padding: 8px 30px; }
+}
+
+@media (hover: none) and (pointer: coarse) { /* Touch device adjustments */
+    .menu-option { padding: 12px 20px; margin: 15px 0; }
+    .music-btn { min-width: 44px; min-height: 44px; }
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) { /* Landscape mobile */
+    .menu-title-container { top: 50%; transform: translate(-50%, -50%) scale(0.8); padding: 15px; }
+    #landing .title { font-size: 1.4rem; margin-bottom: 5px; }
+    #landing .subtitle { margin: 10px 0 25px 0; }
+    #landing .menu-option { margin: 8px 0; }
+}
+
+/* Keyframes (defined once outside specific media queries unless overridden) */
+@keyframes whitePulse {
+    0%, 100% {
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.3), 1px 1px 0 #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    }
+    50% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 1px 1px 0 #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+    }
+}

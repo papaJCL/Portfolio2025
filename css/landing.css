@@ -1,0 +1,433 @@
+/*** LANDING PAGE STYLES ***/
+#landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111111;
+    overflow: hidden;
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+    z-index: 20;
+  }
+  
+  #landing.hide {
+    transform: translateY(-100vh);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+  }
+  
+  /* Classic JRPG window frame */
+  .window-frame {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border: 8px solid #DDDDDD;
+    z-index: 1;
+    box-shadow: 0 0 0 4px #000000;
+  }
+  
+  /* Inner window frame - With background image */
+  .inner-frame {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    right: 32px;
+    bottom: 32px;
+    border: 4px solid #DDDDDD;
+    background-color: #111111;
+    background-image: url('../berserk2.jpg'); /* Adjusted path assuming images are in root or ./images */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    box-shadow: 0 0 0 4px #000000 inset;
+    overflow: hidden;
+  }
+  
+  /* Add a subtle overlay to ensure content remains readable */
+  .inner-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  
+  /* Combined menu title container */
+  .menu-title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 3px solid #444444;
+    padding: 35px 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(50, 50, 50, 0.5);
+  }
+  
+  /* Add decorative elements to the container */
+  .menu-title-container::before,
+  .menu-title-container::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #666666;
+  }
+  
+  .menu-title-container::before {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .menu-title-container::after {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  /* Gothic Black & White Title Style with Drip Effect */
+  .gothic-bw-title {
+    font-family: 'Press Start 2P', monospace;
+    color: #FFFFFF;
+    position: relative;
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.7),
+      2px 2px 0 #000000,
+      -1px -1px 0 #000000,
+      1px -1px 0 #000000,
+      -1px 1px 0 #000000;
+    letter-spacing: 4px;
+    transform: scale(1, 1.2);
+    display: inline-block;
+    filter: contrast(1.2);
+    animation: whitePulse 4s infinite;
+    text-align: center;
+  }
+  
+  /* Container for each line of the title */
+  .gothic-bw-title .title-line {
+    display: inline-block;
+  }
+  
+  /* Subtle white drip effect under each letter */
+  .gothic-bw-title span span {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .gothic-bw-title span span::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-image: linear-gradient(to right,
+        rgba(120, 120, 120, 0.1),
+        rgba(255, 255, 255, 0.9),
+        rgba(120, 120, 120, 0.1));
+  }
+  
+  /* Add longer drips to selected letters */
+  .gothic-bw-title span span.drip::before {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 40%;
+    width: 2px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0 0 1px 1px;
+  }
+  
+  /* Stronger gradient for better visibility (alternative title style, might be unused) */
+  .gothic-drip-title span span::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Thicker line */
+    background-image: linear-gradient(to right,
+        rgba(255, 255, 255, 0.3), /* More visible starting point */
+        rgba(255, 255, 255, 1.0), /* Fully opaque white in center */
+        rgba(255, 255, 255, 0.3) /* More visible ending point */
+      );
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Glow effect */
+  }
+  
+  /* Enhanced longer drips for selected letters (alternative title style, might be unused) */
+  .gothic-drip-title span span.drip::before {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Longer drip */
+    left: 40%;
+    width: 3px; /* Slightly wider */
+    height: 12px; /* Taller drip */
+    background-color: rgba(255, 255, 255, 1.0); /* Fully opaque */
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8); /* Glow effect */
+  }
+  
+  /* White glow pulse animation for title */
+  @keyframes whitePulse {
+    0%,
+    100% {
+      text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.5),
+        2px 2px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
+    }
+    50% {
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        2px 2px 0 #000000,
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000;
+    }
+  }
+  
+  
+  /* Subtitle specific to landing page */
+  .subtitle {
+    color: #CCCCCC;
+    font-size: 1rem;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000000;
+    margin-top: 30px;
+  }
+  
+  /* Menu option */
+  .menu-option {
+    position: relative;
+    color: #CCCCCC;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    padding: 8px 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 0px #000000;
+  }
+  
+  .menu-option::before {
+    content: '►';
+    position: absolute;
+    left: 0;
+    color: #FFFFFF;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-option:hover::before {
+    opacity: 1;
+    left: 10px;
+  }
+  
+  .menu-option:hover {
+    transform: scale(1.1);
+    color: #FFFFFF;
+  }
+  
+  /* Cloud background */
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 256 128"><rect x="32" y="32" width="32" height="16" fill="white" opacity="0.15"/><rect x="160" y="16" width="48" height="16" fill="white" opacity="0.1"/><rect x="64" y="64" width="64" height="16" fill="white" opacity="0.12"/><rect x="192" y="80" width="32" height="16" fill="white" opacity="0.15"/><rect x="96" y="96" width="48" height="16" fill="white" opacity="0.1"/></svg>');
+    z-index: 0;
+    opacity: 0.5;
+    animation: moveClouds 60s linear infinite;
+  }
+  
+  @keyframes moveClouds {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Stars background */
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #BBBBBB;
+    animation: twinkle 4s infinite;
+  }
+  
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* Pixelated border decoration for landing */
+  .pixel-border {
+    position: absolute;
+    z-index: 4;
+  }
+  
+  .pixel-border.top {
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 8px;
+    background: repeating-linear-gradient(to right, #DDDDDD, #DDDDDD 8px, transparent 8px, transparent 16px);
+  }
+  
+  .pixel-border.bottom {
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 8px;
+    background: repeating-linear-gradient(to right, #DDDDDD, #DDDDDD 8px, transparent 8px, transparent 16px);
+  }
+  
+  /* Copyright */
+  .copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.5rem;
+    color: #777777;
+    z-index: 6;
+  }
+  
+  /* Music Player Styles */
+  .music-player {
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .music-controls {
+    display: flex;
+    background-color: #111111;
+    border: 3px solid #DDDDDD;
+    padding: 8px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.7);
+    /* Pixelated border */
+    border-top-color: #FFFFFF;
+    border-left-color: #FFFFFF;
+    border-right-color: #777777;
+    border-bottom-color: #777777;
+  }
+  
+  .music-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .music-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .music-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .music-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  
+  /* Play icon - Triangle */
+  .play-icon::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 15px solid #DDDDDD;
+    border-bottom: 10px solid transparent;
+    left: 4px;
+    top: 0;
+  }
+  
+  /* Pause icon - Two bars */
+  .pause-icon::before,
+  .pause-icon::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 18px;
+    background-color: #DDDDDD;
+  }
+  
+  .pause-icon::before {
+    left: 5px;
+  }
+  
+  .pause-icon::after {
+    left: 15px;
+  }
+  
+  /* Music note icon */
+  .music-btn::after {
+    content: '♪';
+    position: absolute;
+    color: #DDDDDD;
+    font-size: 20px;
+    right: -25px;
+    top: 0;
+    text-shadow: 1px 1px 0 #000000;
+    animation: musicNoteAnimation 2s infinite;
+  }
+  
+  @keyframes musicNoteAnimation {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+  }
