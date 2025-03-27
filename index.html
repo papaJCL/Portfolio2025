@@ -2334,6 +2334,34 @@
     max-width: 100%;
     overflow: hidden;
   }
+
+  .project-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333333;
+  }
+  
+  .project-stat:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .stat-label {
+    margin-bottom: 4px;
+    font-size: 10px;
+    color: #888888;
+  }
+  
+  .stat-value {
+    width: 100%;
+    font-size: 11px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
   
   /* Hide the third navigation help item on very small screens to prevent overflow */
   @media screen and (max-width: 360px) {
